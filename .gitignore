@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data / DB (do not commit)
+data/
+db/
+*.duckdb
+*.parquet
+
+# Reports cache
+reports/**/.cache/
+
+# OS
+.DS_Store
+Thumbs.db

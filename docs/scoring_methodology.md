@@ -98,3 +98,181 @@ The system is considered successful if it:
 3. Penalises high-load or volatile availability profiles.  
 4. Supports optimal shortlists under explicit budget scenarios.  
 5. Is reproducible and extensible.
+
+# Scoring Architecture – Mathematical Framework
+
+---
+
+## 1. Talent Score
+
+### Objective
+
+The Talent Score captures current offensive production adjusted for league-season comparability.
+
+### 1.1 League-Season Standardisation
+
+For each metric \( m \) within league \( L \) and season \( t \):
+
+\[
+Z_{i,m} = \frac{X_{i,m} - \mu_{L,t,m}}{\sigma_{L,t,m}}
+\]
+
+Where:
+
+- \( X_{i,m} \) = player per90 metric  
+- \( \mu_{L,t,m} \) = league-season mean  
+- \( \sigma_{L,t,m} \) = league-season standard deviation  
+
+This ensures cross-league comparability.
+
+### 1.2 Composite Talent Score
+
+\[
+Talent_i = \sum_{m=1}^{M} w_m \cdot Z_{i,m}
+\]
+
+Subject to:
+
+\[
+\sum w_m = 1
+\]
+
+Initial implementation assumes equal weights across:
+
+- xG per 90  
+- xA per 90  
+- Shot-Creating Actions per 90  
+- Progressive Carries per 90  
+- Progressive Passes per 90  
+- Touches in Opposition Box per 90  
+- Take-on Success Rate  
+
+Weight sensitivity analysis will be performed in later phases.
+
+---
+
+## 2. Development Score
+
+The Development Score estimates upside potential rather than current output.
+
+It combines three components:
+
+### 2.1 Age Component
+
+\[
+AgeScore_i = - | Age_i - Age_{peak} |
+\]
+
+Where:
+
+- \( Age_{peak} \approx 26 \)
+
+Younger players further from peak age receive higher development potential.
+
+### 2.2 Minutes Trust Proxy
+
+\[
+MinutesScore_i = Z(\text{season minutes})
+\]
+
+Captures structural trust and integration into team environment.
+
+### 2.3 Performance Trend (if multi-season data available)
+
+\[
+Trend_i = Z(Talent_{t} - Talent_{t-1})
+\]
+
+Measures trajectory direction.
+
+### 2.4 Composite Development Score
+
+\[
+Development_i =
+\alpha_1 AgeScore
++
+\alpha_2 MinutesScore
++
+\alpha_3 Trend
+\]
+
+---
+
+## 3. Physical Risk Score (Availability Proxy)
+
+The Risk Score captures availability risk independently from performance.
+
+Components may include:
+
+- Season minutes load  
+- Match density proxy  
+- Minutes volatility (standard deviation per match)  
+
+Example formulation:
+
+\[
+Risk_i =
+\beta_1 Z(\text{load})
++
+\beta_2 Z(\text{volatility})
+\]
+
+Higher score implies higher availability risk.
+
+---
+
+## 4. Risk-Adjusted Scouting Score
+
+\[
+FinalScore_i =
+w_T \cdot Talent_i
++
+w_D \cdot Development_i
+-
+w_R \cdot Risk_i
+\]
+
+Initial reference weights:
+
+- \( w_T = 0.6 \)
+- \( w_D = 0.2 \)
+- \( w_R = 0.2 \)
+
+These weights are subject to sensitivity testing.
+
+---
+
+## 5. Value Efficiency Score
+
+To account for capital allocation efficiency:
+
+\[
+ValueScore_i =
+\frac{FinalScore_i}{\log(MarketValue_i)}
+\]
+
+Log-transformation reduces skew and prevents excessive penalisation of high-market-value players.
+
+---
+
+## 6. Budget-Constrained Optimisation
+
+Given budget \( B \) and maximum \( k \) signings:
+
+Maximise:
+
+\[
+\sum FinalScore_i
+\]
+
+Subject to:
+
+\[
+\sum MarketValue_i \le B
+\]
+
+\[
+\text{Number of players} \le k
+\]
+
+This is formulated as a constrained knapsack optimisation problem.

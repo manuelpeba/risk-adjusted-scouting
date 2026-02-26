@@ -1,6 +1,22 @@
 # Risk-Adjusted Scouting — Project Status
 
-_Last updated: 2026-02-XX_
+Last updated: 2026-02-26
+
+### FBref Standard 2023–2024 Ingestion — Completed
+
+- Root cause identified: `pandas.read_html()` was interpreting raw HTML as a filepath, leading to `FileNotFoundError`.
+- Fix implemented: wrapped HTML strings with `io.StringIO` before passing to `read_html`.
+- Implemented robust extraction logic:
+  - Parses direct `<table>` elements.
+  - Parses tables embedded inside HTML comments (FBref / Sports-Reference pattern).
+- Flattened MultiIndex columns and normalized to snake_case.
+- Removed redundant header rows within `<tbody>`.
+- Cleaned schema (dropped constant "matches" artefact column).
+- Applied numeric coercion to core performance fields.
+- Persisted processed output to:
+  `data/processed/fbref/standard_2023-2024.parquet`
+- Environment issue resolved:
+  VS Code was executing global Python instead of project `.venv`. Interpreter corrected.
 
 ---
 

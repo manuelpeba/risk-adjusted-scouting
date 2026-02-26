@@ -1,0 +1,201 @@
+player_id,player_name,season,competition_id,competition_name,country_name,age,position,sub_position,nationality,foot,height_in_cm,current_club_id,current_club_name,games_played,season_minutes,minutes_per_game,minutes_volatility,market_value_in_eur,highest_market_value_in_eur
+104511,Alan Chochiev,2015-2016,RU1,premier-liga,Russia,25,Midfield,Attacking Midfield,Russia,right,180,2696,PFK Krylya Sovetov Samara,19,1012.0,53.26315789473684,35.65011567894889,200000,1000000
+187298,Luciano Slagveer,2016-2017,NL1,eredivisie,Netherlands,24,Attack,Right Winger,Suriname,right,179,1283,FC Emmen,27,1033.0,38.25925925925926,31.594177373303257,325000,1500000
+340328,Stephy Mavididi,2022-2023,FR1,ligue-1,France,25,Attack,Left Winger,England,right,182,1003,Leicester City,26,1290.0,49.61538461538461,26.5881363409104,9000000,10000000
+133964,Lorenzo Insigne,2012-2013,IT1,serie-a,Italy,22,Attack,Left Winger,Italy,right,163,6195,Società Sportiva Calcio Napoli,37,1757.0,47.486486486486484,30.94338476360005,8000000,75000000
+235230,Samy Bourard,2020-2021,NL1,eredivisie,Netherlands,25,Midfield,Attacking Midfield,Belgium,right,180,1268,ADO Den Haag,17,927.0,54.529411764705884,18.76516687613711,450000,450000
+187298,Luciano Slagveer,2013-2014,NL1,eredivisie,Netherlands,21,Attack,Right Winger,Suriname,right,179,1283,FC Emmen,25,1240.0,49.6,30.423674991690266,325000,1500000
+197622,Farley Rosa,2016-2017,GR1,super-league-1,Greece,23,Attack,Left Winger,Brazil,right,174,6418,Panetolikos Agrinio,20,1189.0,59.45,30.152072897232124,900000,900000
+156115,Valeri Qazaishvili,2015-2016,NL1,eredivisie,Netherlands,23,Attack,Left Winger,Georgia,right,174,499,Vitesse Arnhem,33,2648.0,80.24242424242425,18.75686589933065,1700000,3500000
+255450,Aleksey Miranchuk,2018-2019,RU1,premier-liga,Russia,24,Midfield,Attacking Midfield,Russia,left,182,800,Atalanta Bergamasca Calcio S.p.a.,30,2637.0,87.9,4.777377244193026,10000000,18000000
+566723,Michael Olise,2024-2025,L1,bundesliga,Germany,24,Attack,Right Winger,France,left,184,27,FC Bayern München,20,1473.0,73.65,17.550712236259812,55000000,55000000
+263860,Jason Remeseiro,2018-2019,ES1,laliga,Spain,25,Attack,Right Winger,Spain,right,178,8024,Futebol Clube de Arouca,30,2332.0,77.73333333333333,23.99296193099598,3000000,6000000
+435772,Charles De Ketelaere,2023-2024,IT1,serie-a,Italy,23,Midfield,Attacking Midfield,Belgium,left,192,800,Atalanta Bergamasca Calcio S.p.a.,35,2042.0,58.34285714285714,21.138918552069317,34000000,34000000
+289075,Oleksandr Zubkov,2018-2019,UKR1,premier-liga,Ukraine,23,Attack,Right Winger,Ukraine,left,182,660,FC Shakhtar Donetsk,14,962.0,68.71428571428571,25.666622493115092,7000000,7000000
+159372,Felipe Anderson,2015-2016,IT1,serie-a,Italy,23,Attack,Left Winger,Brazil,right,175,398,Società Sportiva Lazio S.p.A.,35,2068.0,59.08571428571429,29.68922019720908,8000000,45000000
+294853,Sebastián Driussi,2019-2020,RU1,premier-liga,Russia,24,Midfield,Attacking Midfield,Argentina,both,179,964,AO FK Zenit Sankt-Peterburg,20,1348.0,67.4,25.611325619733158,15000000,16000000
+464535,Zisis Chatzistravos,2023-2024,GR1,super-league-1,Greece,25,Midfield,Attacking Midfield,Greece,right,170,3385,Panserraikos Serres,18,1065.0,59.166666666666664,25.545710664088666,500000,500000
+103565,Wahbi Khazri,2014-2015,FR1,ligue-1,France,24,Attack,Left Winger,Tunisia,right,176,969,Montpellier HSC,32,2381.0,74.40625,19.16516921233674,1800000,16000000
+170527,Timo Werner,2019-2020,L1,bundesliga,Germany,24,Attack,Left Winger,Germany,right,180,148,Tottenham Hotspur Football Club,34,2808.0,82.58823529411765,12.518498423060414,17000000,80000000
+381834,Konstantin Kuchaev,2021-2022,RU1,premier-liga,Russia,24,Midfield,Attacking Midfield,Russia,right,178,49702,FK Nizhny Novgorod,22,1071.0,48.68181818181818,34.48370677664818,2000000,5000000
+110078,Eduardo,2012-2013,PO1,liga-portugal-bwin,Portugal,24,Midfield,Attacking Midfield,Brazil,right,184,417,Olympique Gymnaste Club Nice Côte d'Azur,29,1609.0,55.48275862068966,28.796097304603954,1500000,6000000
+177818,Andriy Bliznichenko,2017-2018,TR1,super-lig,Turkey,24,Attack,Right Winger,Ukraine,left,179,26459,NK Veres Rivne,21,1237.0,58.904761904761905,28.57888791515723,200000,1000000
+435605,Cristopher Núñez,2021-2022,GR1,super-league-1,Greece,25,Midfield,Attacking Midfield,Costa Rica,right,171,3999,PAS Lamia 1964,23,1550.0,67.3913043478261,26.232636709516246,500000,500000
+502670,Khvicha Kvaratskhelia,2022-2023,IT1,serie-a,Italy,22,Attack,Left Winger,Georgia,both,183,583,Paris Saint-Germain Football Club,34,2539.0,74.67647058823529,16.648124056543914,80000000,85000000
+422281,Muhammed Cham,2024-2025,TR1,super-lig,Turkey,25,Midfield,Attacking Midfield,Austria,left,180,449,Trabzonspor Kulübü,31,1546.0,49.87096774193548,32.39050232705506,6000000,6000000
+265625,Ajdin Hrustić,2018-2019,NL1,eredivisie,Netherlands,23,Midfield,Attacking Midfield,Australia,left,180,276,Verona Hellas Football Club,18,1009.0,56.05555555555556,34.675435144625595,600000,3000000
+392085,Nicolò Zaniolo,2019-2020,IT1,serie-a,Italy,21,Midfield,Attacking Midfield,Italy,left,190,430,Associazione Calcio Fiorentina,18,1295.0,71.94444444444444,24.806970844283587,20000000,55000000
+62515,Ivan Bobko,2013-2014,UKR1,premier-liga,Ukraine,24,Midfield,Attacking Midfield,,left,181,6992,Chornomorets Odesa,20,1380.0,69.0,29.941609843159732,150000,1200000
+61764,Marco Matias,2012-2013,PO1,liga-portugal-bwin,Portugal,24,Attack,Left Winger,Portugal,right,177,4294,SC Farense,20,1195.0,59.75,27.90318082226469,100000,4500000
+272278,Chris Führich,2021-2022,L1,bundesliga,Germany,24,Attack,Left Winger,Germany,right,181,79,Verein für Bewegungsspiele Stuttgart 1893,25,1727.0,69.08,24.15933773926761,28000000,28000000
+177843,Domenico Berardi,2014-2015,IT1,serie-a,Italy,21,Attack,Right Winger,Italy,left,183,6574,Unione Sportiva Sassuolo Calcio,32,2679.0,83.71875,7.870968710235099,10000000,35000000
+184885,Christos Albanis,2017-2018,GR1,super-league-1,Greece,24,Attack,Left Winger,Greece,both,184,2441,Athlitiki Enosi Konstantinoupoleos,29,2193.0,75.62068965517241,21.841772368881397,800000,800000
+77826,Ryad Boudebouz,2012-2013,FR1,ligue-1,France,23,Midfield,Attacking Midfield,Algeria,left,177,618,AS Saint-Étienne,32,2381.0,74.40625,26.083830449868746,1200000,10000000
+399383,Mathieu Cafaro,2021-2022,BE1,jupiler-pro-league,Belgium,25,Attack,Left Winger,France,right,175,1421,Stade Reims,12,983.0,81.91666666666667,7.064681324888069,3000000,7500000
+185237,Saleh Gomaa,2014-2015,PO1,liga-portugal-bwin,Portugal,22,Midfield,Attacking Midfield,Egypt,right,175,982,Clube Desportivo Nacional,23,1756.0,76.34782608695652,17.99180657882232,200000,1500000
+339332,Noa Lang,2021-2022,BE1,jupiler-pro-league,Belgium,23,Attack,Left Winger,Netherlands,right,173,383,Eindhovense Voetbalvereniging Philips Sport Vereniging,31,2350.0,75.80645161290323,22.689231998885976,18000000,25000000
+514887,Aral Şimşir,2023-2024,DK1,superligaen,Denmark,22,Attack,Left Winger,Türkiye,right,175,865,Fodbold Club Midtjylland,19,1283.0,67.52631578947368,19.239127951165816,1500000,1500000
+175449,Moi Gómez,2015-2016,ES1,laliga,Spain,22,Midfield,Attacking Midfield,Spain,right,176,331,Club Atlético Osasuna,22,904.0,41.09090909090909,31.362845839839753,3500000,10000000
+93976,Stanislav Pechenkin,2012-2013,UKR1,premier-liga,Ukraine,25,Midfield,Attacking Midfield,Russia,,175,6996,Goverla Uzhgorod (- 2016),17,1029.0,60.529411764705884,28.94643663340319,100000,500000
+88103,James Rodríguez,2013-2014,FR1,ligue-1,France,23,Midfield,Attacking Midfield,,left,181,683,Olympiakos Syndesmos Filathlon Peiraios,34,2637.0,77.55882352941177,20.648588011077443,6000000,80000000
+612826,Silas,2020-2021,L1,bundesliga,Germany,23,Attack,Right Winger,DR Congo,right,189,79,Verein für Bewegungsspiele Stuttgart 1893,25,1933.0,77.32,19.138902789867554,10000000,25000000
+331498,Jordi Mboula,2021-2022,PO1,liga-portugal-bwin,Portugal,23,Attack,Right Winger,Spain,right,183,2424,Gil Vicente Futebol Clube,13,973.0,74.84615384615384,19.110392476129736,1200000,4000000
+745461,Luca Koleosho,2023-2024,GB1,premier-league,England,20,Attack,Left Winger,Italy,right,175,1132,Burnley Football Club,15,986.0,65.73333333333333,16.221248068163217,7000000,7000000
+490426,Krépin Diatta,2020-2021,BE1,jupiler-pro-league,Belgium,22,Attack,Right Winger,Senegal,right,175,162,Association sportive de Monaco Football Club,19,1504.0,79.15789473684211,21.330144613951347,12000000,21000000
+68290,Neymar,2015-2016,ES1,laliga,Spain,24,Attack,Left Winger,Brazil,right,175,583,Paris Saint-Germain Football Club,34,3056.0,89.88235294117646,0.6758308995927096,50000000,180000000
+165895,Matteo Politano,2015-2016,IT1,serie-a,Italy,23,Attack,Right Winger,Italy,left,171,6195,Società Sportiva Calcio Napoli,28,1039.0,37.107142857142854,29.074214503225914,13000000,30000000
+500067,Chidera Ejuke,2020-2021,RU1,premier-liga,Russia,23,Attack,Left Winger,Nigeria,right,176,1096,Royal Antwerp Football Club,25,1589.0,63.56,26.11831541275203,6000000,9000000
+213368,Pedro Henrique,2014-2015,FR1,ligue-1,France,25,Attack,Right Winger,Brazil,right,181,2381,Sivasspor,34,1799.0,52.911764705882355,29.311077656005786,1700000,3000000
+542525,Younes Bakiz,2021-2022,DK1,superligaen,Denmark,23,Midfield,Attacking Midfield,Denmark,both,186,1177,Silkeborg Idrætsforening,17,1256.0,73.88235294117646,19.1768314653882,600000,600000
+435485,Luiz Araújo,2020-2021,FR1,ligue-1,France,25,Attack,Right Winger,Brazil,left,175,1082,Lille Olympique Sporting Club,28,1501.0,53.607142857142854,28.82501305378751,6000000,10000000
+564785,Kristian Thorstvedt,2022-2023,IT1,serie-a,Italy,24,Midfield,Attacking Midfield,Norway,left,189,6574,Unione Sportiva Sassuolo Calcio,31,1128.0,36.38709677419355,25.325847333982395,8000000,8500000
+74861,David Wotherspoon,2014-2015,SC1,scottish-premiership,Scotland,25,Midfield,Attacking Midfield,Canada,left,172,2578,St. Johnstone FC,35,2732.0,78.05714285714286,20.95974762272111,300000,1250000
+718318,Ibrahim Said,2022-2023,DK1,superligaen,Denmark,21,Attack,Right Winger,Nigeria,right,172,1063,Viborg Fodsports Forening,22,1374.0,62.45454545454545,15.089813760906493,1000000,1000000
+122088,Artem Gromov,2013-2014,UKR1,premier-liga,Ukraine,24,Attack,Left Winger,Ukraine,right,178,60551,SC Dnipro-1,25,1618.0,64.72,30.96775096774062,250000,1800000
+344584,Connor McLennan,2020-2021,SC1,scottish-premiership,Scotland,22,Attack,Right Winger,Scotland,right,181,2578,St. Johnstone FC,23,1090.0,47.391304347826086,28.03373609007979,375000,500000
+746838,Zach Booth,2023-2024,NL1,eredivisie,Netherlands,20,Midfield,Attacking Midfield,United States,,,724,Football Club Volendam,27,1554.0,57.55555555555556,32.43949733972955,500000,500000
+367468,Nuno Santos,2021-2022,PO1,liga-portugal-bwin,Portugal,23,Midfield,Attacking Midfield,Portugal,right,179,2420,Vitória Sport Clube,31,2346.0,75.6774193548387,16.50491050444156,1000000,2500000
+371256,Tetê,2021-2022,UKR1,premier-liga,Ukraine,22,Attack,Right Winger,Brazil,left,175,265,Panathinaikos Athlitikos Omilos,17,968.0,56.94117647058823,27.89575255089246,10000000,28000000
+170527,Timo Werner,2014-2015,L1,bundesliga,Germany,19,Attack,Left Winger,Germany,right,180,148,Tottenham Hotspur Football Club,32,1626.0,50.8125,34.43330282952827,17000000,80000000
+240306,Bruno Fernandes,2014-2015,IT1,serie-a,Italy,21,Midfield,Attacking Midfield,Portugal,right,179,985,Manchester United Football Club,31,1606.0,51.806451612903224,30.403118849816146,70000000,90000000
+426620,Pedro Gonçalves,2020-2021,PO1,liga-portugal-bwin,Portugal,23,Attack,Left Winger,Portugal,right,173,336,Sporting Clube de Portugal,37,3116.0,84.21621621621621,7.534192814008406,32000000,38000000
+514304,Nélson da Luz,2022-2023,PO1,liga-portugal-bwin,Portugal,25,Attack,Left Winger,Angola,left,183,2420,Vitória Sport Clube,29,1151.0,39.689655172413794,29.354085010056874,800000,1000000
+298983,Javi Ontiveros,2020-2021,ES1,laliga,Spain,24,Attack,Left Winger,Spain,right,175,331,Club Atlético Osasuna,25,1255.0,50.2,30.650285479910302,1000000,9000000
+502670,Khvicha Kvaratskhelia,2019-2020,RU1,premier-liga,Russia,19,Attack,Left Winger,Georgia,both,183,583,Paris Saint-Germain Football Club,21,935.0,44.523809523809526,29.014969941835602,80000000,85000000
+143850,Georgios Katidis,2012-2013,GR1,super-league-1,Greece,20,Midfield,Attacking Midfield,Greece,right,175,2672,APO Levadiakos Football Club,20,1135.0,56.75,32.270536097189336,200000,1000000
+341092,Federico Chiesa,2017-2018,IT1,serie-a,Italy,21,Attack,Right Winger,Italy,right,175,31,Liverpool Football Club,36,3022.0,83.94444444444444,11.782624788797284,35000000,70000000
+331208,Petros Orfanidis,2015-2016,GR1,super-league-1,Greece,20,Midfield,Attacking Midfield,Greece,left,179,128,AO Xanthi,15,1010.0,67.33333333333333,24.626995125042942,150000,350000
+30732,Levan Kenia,2012-2013,UKR1,premier-liga,Ukraine,23,Midfield,Attacking Midfield,Georgia,left,176,2477,Karpaty Lviv (-2021),20,1401.0,70.05,23.438163323946696,50000,2000000
+99361,Evripidis Giakos,2015-2016,GR1,super-league-1,Greece,25,Midfield,Attacking Midfield,Greece,right,192,4603,Athlitiki Enosi Larisas,25,1169.0,46.76,32.567812330581866,200000,600000
+357885,Pablo Fornals,2017-2018,ES1,laliga,Spain,22,Midfield,Attacking Midfield,Spain,right,178,379,West Ham United Football Club,35,2623.0,74.94285714285714,27.51824626590547,14000000,30000000
+85148,Julian Draxler,2016-2017,FR1,ligue-1,France,24,Attack,Left Winger,Germany,right,185,294,Sport Lisboa e Benfica,17,1016.0,59.76470588235294,27.535067292379146,5000000,40000000
+569140,Lassine Sinayoko,2022-2023,FR1,ligue-1,France,24,Attack,Right Winger,,right,186,290,Association de la Jeunesse auxerroise,33,1567.0,47.484848484848484,30.923288480231022,1200000,1500000
+348425,Miguel Cardoso,2017-2018,PO1,liga-portugal-bwin,Portugal,24,Midfield,Attacking Midfield,Portugal,right,176,3205,Kayserispor Kulübü,32,2612.0,81.625,18.66941014065522,2500000,2800000
+719442,David Da Costa,2023-2024,FR1,ligue-1,France,23,Midfield,Attacking Midfield,Portugal,right,168,826,Racing Club de Lens,25,1499.0,59.96,31.82009428018716,8000000,10000000
+69633,Christian Eriksen,2014-2015,GB1,premier-league,England,23,Midfield,Attacking Midfield,Denmark,right,182,985,Manchester United Football Club,38,3138.0,82.57894736842105,14.472535839610444,8000000,100000000
+530851,Franco Tongya,2022-2023,DK1,superligaen,Denmark,21,Attack,Left Winger,Italy,right,175,173,Odense Boldklub,15,932.0,62.13333333333333,25.32947339014813,900000,2500000
+54576,Sebastián Blanco,2012-2013,UKR1,premier-liga,Ukraine,25,Midfield,Attacking Midfield,Argentina,both,168,984,West Bromwich Albion,26,1000.0,38.46153846153846,32.18244955207104,600000,6000000
+187598,Terell Ondaan,2014-2015,NL1,eredivisie,Netherlands,22,Attack,Right Winger,Guyana,right,173,1269,Prins Hendrik Ende Desespereert Nimmer Combinatie Zwolle,33,1797.0,54.45454545454545,27.47791499863438,100000,750000
+91845,Heung-min Son,2014-2015,L1,bundesliga,Germany,23,Attack,Left Winger,"Korea, South",both,184,148,Tottenham Hotspur Football Club,30,2290.0,76.33333333333333,18.094812025059067,45000000,90000000
+139337,Tiago Rodrigues,2013-2014,PO1,liga-portugal-bwin,Portugal,22,Midfield,Attacking Midfield,Portugal,right,177,28095,FK Ufa,21,989.0,47.095238095238095,31.944751058372734,250000,3000000
+55215,Javier Pastore,2013-2014,FR1,ligue-1,France,25,Midfield,Attacking Midfield,Argentina,right,187,1531,Elche Club de Fútbol S.A.D.,29,1577.0,54.37931034482759,31.293288685687145,400000,30000000
+234781,Maxwel Cornet,2019-2020,FR1,ligue-1,France,24,Attack,Left Winger,Cote d'Ivoire,left,179,180,Southampton FC,22,1329.0,60.40909090909091,34.2632311416256,9000000,18000000
+380415,Henry Onyekuru,2018-2019,TR1,super-lig,Turkey,22,Attack,Left Winger,Nigeria,right,175,3840,Adana Demirspor,31,2523.0,81.38709677419355,18.893039201805443,4800000,13000000
+431755,Dejan Kulusevski,2023-2024,GB1,premier-league,England,24,Midfield,Attacking Midfield,Sweden,left,186,148,Tottenham Hotspur Football Club,36,2766.0,76.83333333333333,23.33392856383644,55000000,55000000
+58494,Stavros Tsoukalas,2012-2013,GR1,super-league-1,Greece,25,Midfield,Attacking Midfield,Greece,right,186,441,Apollon Smyrnis,30,2585.0,86.16666666666667,14.315686811637399,150000,900000
+528451,Tobias Bech,2021-2022,DK1,superligaen,Denmark,20,Attack,Right Winger,Denmark,left,189,678,Aarhus Gymnastik Forening,22,1349.0,61.31818181818182,21.106626197037926,1500000,1500000
+75615,Douglas Costa,2012-2013,UKR1,premier-liga,Ukraine,23,Attack,Right Winger,Brazil,left,172,506,Juventus Football Club,27,1310.0,48.51851851851852,22.25004431184996,1500000,55000000
+168163,Deni Milosevic,2019-2020,TR1,super-lig,Turkey,25,Midfield,Attacking Midfield,Bosnia-Herzegovina,right,183,589,Antalyaspor,28,2341.0,83.60714285714286,13.504864958636958,300000,2300000
+497221,Andriy Remenyuk,2021-2022,UKR1,premier-liga,Ukraine,23,Attack,Left Winger,Ukraine,right,170,55686,TOV FK Metalist 1925 Kharkiv,17,923.0,54.294117647058826,35.198203005404814,250000,600000
+32711,Patrick Herrmann,2013-2014,L1,bundesliga,Germany,23,Attack,Right Winger,Germany,right,179,18,Borussia Verein für Leibesübungen 1900 Mönchengladbach,34,2704.0,79.52941176470588,9.450288803920685,1000000,12000000
+571020,Oihan Sancet,2024-2025,ES1,laliga,Spain,25,Midfield,Attacking Midfield,Spain,right,188,621,Athletic Club Bilbao,29,1626.0,56.06896551724138,24.06303651902752,35000000,35000000
+206744,Wouter Marinus,2015-2016,NL1,eredivisie,Netherlands,21,Midfield,Attacking Midfield,Netherlands,right,177,1283,FC Emmen,31,1910.0,61.61290322580645,28.008843556593543,100000,800000
+357885,Pablo Fornals,2020-2021,GB1,premier-league,England,25,Midfield,Attacking Midfield,Spain,right,178,379,West Ham United Football Club,40,3147.0,78.675,17.774120934662285,14000000,30000000
+176341,Beykan Simsek,2015-2016,TR1,super-lig,Turkey,21,Attack,Left Winger,Turkey,right,175,1467,Göztepe Sportif Yatırımlar A.Ş.,25,1698.0,67.92,23.199862068555493,200000,2000000
+182574,Jean-Paul Boëtius,2014-2015,NL1,eredivisie,Netherlands,21,Midfield,Attacking Midfield,Netherlands,right,178,44,Hertha BSC,31,1780.0,57.41935483870968,27.759071976619133,1200000,6000000
+74842,Mario Götze,2013-2014,L1,bundesliga,Germany,22,Midfield,Attacking Midfield,Germany,right,176,24,Eintracht Frankfurt Fußball AG,27,1823.0,67.51851851851852,23.90160442525792,5500000,55000000
+140446,Rilwan Hassan,2013-2014,DK1,superligaen,Denmark,23,Attack,Right Winger,Nigeria,right,172,5817,Sønderjyske Fodbold,21,1210.0,57.61904761904762,27.305112360100853,175000,800000
+263860,Jason Remeseiro,2017-2018,ES1,laliga,Spain,24,Attack,Right Winger,Spain,right,178,8024,Futebol Clube de Arouca,27,1792.0,66.37037037037037,25.27646855923091,3000000,6000000
+339820,Amath Ndiaye,2018-2019,ES1,laliga,Spain,23,Attack,Right Winger,Senegal,right,173,237,Real Club Deportivo Mallorca S.A.D.,15,1010.0,67.33333333333333,22.904633204271626,1500000,5000000
+319301,Daniel James,2020-2021,GB1,premier-league,England,24,Attack,Right Winger,Wales,right,171,399,Leeds United Association Football Club,18,944.0,52.44444444444444,33.66868347461154,12000000,28000000
+424051,Samuel Kalu,2020-2021,FR1,ligue-1,France,24,Attack,Right Winger,Nigeria,right,177,1010,Watford FC,20,972.0,48.6,24.98679651335881,2500000,10000000
+128220,Luis Alberto,2015-2016,ES1,laliga,Spain,24,Midfield,Attacking Midfield,Spain,right,183,398,Società Sportiva Lazio S.p.A.,29,2106.0,72.62068965517241,22.519591153732616,11000000,55000000
+72772,Josué,2013-2014,PO1,liga-portugal-bwin,Portugal,24,Midfield,Attacking Midfield,Portugal,left,174,19771,Akhisarspor,20,1233.0,61.65,25.644248867923583,800000,8250000
+342393,Gustav Marcussen,2019-2020,DK1,superligaen,Denmark,22,Attack,Left Winger,Denmark,right,178,1177,Silkeborg Idrætsforening,20,961.0,48.05,26.27636770940763,250000,500000
+255508,Iñaki Williams,2014-2015,ES1,laliga,Spain,21,Attack,Right Winger,Ghana,right,186,621,Athletic Club Bilbao,19,1306.0,68.73684210526316,28.183313662077946,25000000,50000000
+203460,Jack Grealish,2019-2020,GB1,premier-league,England,25,Attack,Left Winger,England,right,180,281,Manchester City Football Club,30,2694.0,89.8,1.0770329614269023,60000000,100000000
+214316,Luciano Vietto,2016-2017,ES1,laliga,Spain,24,Midfield,Attacking Midfield,Argentina,right,173,336,Sporting Clube de Portugal,21,1309.0,62.333333333333336,32.98243880978588,2300000,20000000
+342389,Anders Dreyer,2021-2022,RU1,premier-liga,Russia,24,Attack,Right Winger,Denmark,left,174,58,Royal Sporting Club Anderlecht,14,1210.0,86.42857142857143,6.8942448640078045,15000000,15000000
+346853,Romano Schmid,2022-2023,L1,bundesliga,Germany,23,Midfield,Attacking Midfield,Austria,right,168,86,Sportverein Werder Bremen von 1899,27,1520.0,56.2962962962963,30.312953855864397,10000000,10000000
+232093,Reziuan Mirzov,2017-2018,RU1,premier-liga,Russia,25,Attack,Left Winger,Russia,right,182,3719,FC Khimki (-2025),20,1371.0,68.55,27.05452827162211,1000000,2800000
+175169,Bernard,2015-2016,UKR1,premier-liga,Ukraine,24,Attack,Left Winger,Brazil,right,164,265,Panathinaikos Athlitikos Omilos,21,1250.0,59.523809523809526,25.104769130716498,2500000,20000000
+73097,Omar El Kaddouri,2014-2015,IT1,serie-a,Italy,25,Midfield,Attacking Midfield,Morocco,right,185,1091,Panthessalonikios Athlitikos Omilos Konstantinoupoliton,32,2308.0,72.125,24.824068461877886,600000,5000000
+592400,Abdelkahar Kadri,2023-2024,BE1,jupiler-pro-league,Belgium,24,Midfield,Attacking Midfield,Algeria,right,170,601,KV Kortrijk,27,2287.0,84.70370370370371,12.721561792119985,2500000,3300000
+171167,Jairo Samperio,2013-2014,ES1,laliga,Spain,21,Attack,Right Winger,Spain,right,172,39,1. Fußball- und Sportverein Mainz 05,25,1375.0,55.0,32.398765408576914,300000,6000000
+192565,Leroy Sané,2020-2021,L1,bundesliga,Germany,25,Attack,Right Winger,Germany,left,183,27,FC Bayern München,32,1805.0,56.40625,27.424737208175763,70000000,100000000
+64481,Roland Alberg,2013-2014,NL1,eredivisie,Netherlands,24,Midfield,Attacking Midfield,Suriname,right,180,169,Panionios Athens,26,2107.0,81.03846153846153,19.53592503220427,250000,1500000
+170527,Timo Werner,2015-2016,L1,bundesliga,Germany,20,Attack,Left Winger,Germany,right,180,148,Tottenham Hotspur Football Club,33,2197.0,66.57575757575758,27.487771719858426,17000000,80000000
+258626,Talisca,2016-2017,TR1,super-lig,Turkey,23,Midfield,Attacking Midfield,Brazil,left,190,114,Beşiktaş Jimnastik Kulübü,22,1761.0,80.04545454545455,14.069558604975603,15000000,28000000
+191391,Yusuf Erdoğan,2014-2015,TR1,super-lig,Turkey,23,Attack,Left Winger,Türkiye,left,171,2293,Konyaspor,22,1574.0,71.54545454545455,24.457248921196932,500000,6250000
+190633,Ninos Gouriye,2014-2015,NL1,eredivisie,Netherlands,24,Attack,Left Winger,Netherlands,right,178,19657,Vendsyssel FF,23,1020.0,44.34782608695652,30.149783611094815,200000,1000000
+96454,Maxime Lestienne,2012-2013,BE1,jupiler-pro-league,Belgium,21,Attack,Left Winger,Belgium,left,176,3057,Royal Standard Club de Liège,28,1865.0,66.60714285714286,30.995782300309234,1000000,10000000
+401534,Arthur Gomes,2022-2023,PO1,liga-portugal-bwin,Portugal,25,Attack,Left Winger,Brazil,right,175,121,FK Dinamo Moskva,28,1069.0,38.17857142857143,29.10578436794771,3000000,4000000
+448470,André Franco,2021-2022,PO1,liga-portugal-bwin,Portugal,24,Midfield,Attacking Midfield,Portugal,left,177,720,Futebol Clube do Porto,33,2531.0,76.6969696969697,21.751328553620965,3000000,4000000
+724520,Abde Ezzalzouli,2022-2023,ES1,laliga,Spain,22,Attack,Left Winger,Morocco,right,177,150,Real Betis Balompié S.A.D.,28,1511.0,53.964285714285715,31.27354215268092,9000000,15000000
+419672,Mikhail Ignatov,2022-2023,RU1,premier-liga,Russia,23,Midfield,Attacking Midfield,Russia,right,187,232,FK Spartak Moskva,21,1236.0,58.857142857142854,19.09945328134443,2500000,2800000
+166745,Gegam Kadimyan,2014-2015,UKR1,premier-liga,Ukraine,23,Attack,Left Winger,Armenia,right,184,9007,Arsenal Kyiv,21,1333.0,63.476190476190474,28.179051739121736,100000,600000
+410225,Ismaïla Sarr,2019-2020,GB1,premier-league,England,22,Attack,Right Winger,Senegal,right,185,873,Crystal Palace Football Club,22,1496.0,68.0,29.33195589052384,18000000,30000000
+566723,Michael Olise,2021-2022,GB1,premier-league,England,21,Attack,Right Winger,France,left,184,27,FC Bayern München,26,1135.0,43.65384615384615,33.26344992017088,55000000,55000000
+314875,Jarrod Bowen,2020-2021,GB1,premier-league,England,25,Attack,Right Winger,England,left,176,379,West Ham United Football Club,45,3134.0,69.64444444444445,25.912807262952303,50000000,50000000
+500689,Evann Guessand,2022-2023,FR1,ligue-1,France,22,Attack,Right Winger,Cote d'Ivoire,right,188,417,Olympique Gymnaste Club Nice Côte d'Azur,30,1257.0,41.9,29.452051428267833,8000000,8000000
+240306,Bruno Fernandes,2015-2016,IT1,serie-a,Italy,22,Midfield,Attacking Midfield,Portugal,right,179,985,Manchester United Football Club,31,2120.0,68.38709677419355,24.598291862221284,70000000,90000000
+88755,Kevin De Bruyne,2014-2015,EL,europa-league,,24,Midfield,Attacking Midfield,Belgium,right,181,281,Manchester City Football Club,11,981.0,89.18181818181819,1.7486712783337601,50000000,150000000
+393239,Mitchell van Bergen,2021-2022,FR1,ligue-1,France,23,Attack,Right Winger,Netherlands,right,170,317,Football Club Twente,20,984.0,49.2,21.912553479683744,900000,4000000
+398065,Harvey Barnes,2018-2019,GB1,premier-league,England,22,Attack,Left Winger,England,right,182,762,Newcastle United Football Club,16,1009.0,63.0625,26.86184270950152,35000000,35000000
+339820,Amath Ndiaye,2017-2018,ES1,laliga,Spain,22,Attack,Right Winger,Senegal,right,173,237,Real Club Deportivo Mallorca S.A.D.,37,2884.0,77.94594594594595,13.832874954635848,1500000,5000000
+76749,Tabaré Viúdez,2012-2013,TR1,super-lig,Turkey,24,Attack,Right Winger,Uruguay,right,169,10484,Kasımpaşa A.Ş.,23,1378.0,59.91304347826087,29.370072083934367,150000,5000000
+262688,Aminu Umar,2016-2017,TR1,super-lig,Turkey,22,Attack,Left Winger,Nigeria,right,174,126,Çaykur Rizespor Kulübü,25,1907.0,76.28,22.16757993106149,175000,4750000
+323740,Aitor Cantalapiedra,2020-2021,GR1,super-league-1,Greece,25,Attack,Right Winger,Spain,left,177,265,Panathinaikos Athlitikos Omilos,17,953.0,56.05882352941177,27.85565860400676,1800000,2500000
+353399,Romain Del Castillo,2018-2019,FR1,ligue-1,France,23,Attack,Right Winger,France,left,172,3911,Stade brestois 29,29,1338.0,46.13793103448276,32.69052814198847,10000000,10000000
+667914,Paul Mukairu,2020-2021,BE1,jupiler-pro-league,Belgium,21,Attack,Left Winger,Nigeria,right,182,190,Football Club København,23,1274.0,55.391304347826086,30.484121498184393,700000,3000000
+286297,Lorenzo Pellegrini,2015-2016,IT1,serie-a,Italy,20,Midfield,Attacking Midfield,Italy,right,186,12,Associazione Sportiva Roma,19,1152.0,60.63157894736842,31.194146762554144,25000000,45000000
+467232,Arbnor Mucolli,2020-2021,DK1,superligaen,Denmark,22,Attack,Left Winger,Albania,left,175,443,Vejle Boldklub,17,1097.0,64.52941176470588,23.544994839815118,1200000,1200000
+217033,Aleksey Sutormin,2018-2019,RU1,premier-liga,Russia,25,Attack,Right Winger,Russia,right,188,964,AO FK Zenit Sankt-Peterburg,29,2514.0,86.6896551724138,7.593570094339401,1200000,3500000
+746695,Kamaldeen Sulemana,2022-2023,GB1,premier-league,England,21,Attack,Left Winger,Ghana,right,175,180,Southampton FC,18,967.0,53.72222222222222,27.29022119440416,18000000,22000000
+508780,Altin Zeqiri,2023-2024,TR1,super-lig,Turkey,24,Attack,Left Winger,Kosovo,right,185,126,Çaykur Rizespor Kulübü,35,2288.0,65.37142857142857,22.674196428395636,1800000,1800000
+138812,Ibrahima Conté,2012-2013,BE1,jupiler-pro-league,Belgium,22,Midfield,Attacking Midfield,Guinea,left,174,2861,KV Oostende,21,1180.0,56.19047619047619,33.07224278198238,150000,3000000
+139337,Tiago Rodrigues,2014-2015,PO1,liga-portugal-bwin,Portugal,23,Midfield,Attacking Midfield,Portugal,right,177,28095,FK Ufa,18,1377.0,76.5,15.283433296656002,250000,3000000
+795738,Paxten Aaronson,2023-2024,NL1,eredivisie,Netherlands,21,Midfield,Attacking Midfield,United States,right,175,200,Football Club Utrecht,14,1254.0,89.57142857142857,1.5452362609131376,4500000,4500000
+58515,Vitaliy Balashov,2014-2015,UKR1,premier-liga,Ukraine,24,Attack,Left Winger,Ukraine,both,177,41201,PFK Tambov (-2021),15,1004.0,66.93333333333334,26.103554462094916,175000,600000
+177843,Domenico Berardi,2013-2014,IT1,serie-a,Italy,20,Attack,Right Winger,Italy,left,183,6574,Unione Sportiva Sassuolo Calcio,29,2185.0,75.34482758620689,22.8598064101209,10000000,35000000
+146164,Max Meyer,2016-2017,L1,bundesliga,Germany,22,Midfield,Attacking Midfield,Germany,right,173,36,Fenerbahçe Spor Kulübü,27,1668.0,61.77777777777778,32.111303344291954,3000000,20000000
+142920,Aleksandar Trajkovski,2013-2014,BE1,jupiler-pro-league,Belgium,22,Attack,Left Winger,North Macedonia,right,179,1053,Aalborg BK,18,929.0,51.611111111111114,34.65566955201941,450000,2000000
+355761,Giannis Bouzoukis,2019-2020,GR1,super-league-1,Greece,22,Midfield,Attacking Midfield,Greece,left,172,6418,Panetolikos Agrinio,23,1539.0,66.91304347826087,27.37805062371373,300000,1500000
+74861,David Wotherspoon,2013-2014,SC1,scottish-premiership,Scotland,24,Midfield,Attacking Midfield,Canada,left,172,2578,St. Johnstone FC,38,2876.0,75.6842105263158,19.190328242657596,300000,1250000
+497221,Andriy Remenyuk,2022-2023,UKR1,premier-liga,Ukraine,24,Attack,Left Winger,Ukraine,right,170,55686,TOV FK Metalist 1925 Kharkiv,29,2010.0,69.3103448275862,24.27017958570709,250000,600000
+618425,Tanguy Coulibaly,2020-2021,L1,bundesliga,Germany,20,Attack,Right Winger,France,left,179,969,Montpellier HSC,31,1508.0,48.645161290322584,29.709940106015328,2000000,5000000
+232271,Sofiane Boufal,2016-2017,GB1,premier-league,England,24,Midfield,Attacking Midfield,Morocco,right,175,3948,Royale Union Saint-Gilloise,24,1101.0,45.875,24.725682498163724,7000000,15000000
+68290,Neymar,2013-2014,ES1,laliga,Spain,22,Attack,Left Winger,Brazil,right,175,583,Paris Saint-Germain Football Club,26,1736.0,66.76923076923077,28.385136538888815,50000000,180000000
+337066,Toni Villa,2018-2019,ES1,laliga,Spain,24,Attack,Left Winger,Spain,right,172,12321,Girona Fútbol Club S. A. D.,26,1774.0,68.23076923076923,25.665462714148763,1500000,6000000
+227039,Younes Namli,2017-2018,NL1,eredivisie,Netherlands,24,Attack,Right Winger,Denmark,left,180,1269,Prins Hendrik Ende Desespereert Nimmer Combinatie Zwolle,32,2808.0,87.75,5.728219618694802,1600000,3000000
+63158,Vladislav Ryzhkov,2014-2015,RU1,premier-liga,Russia,25,Midfield,Attacking Midfield,Russia,right,174,3729,Arsenal Tula,26,1550.0,59.61538461538461,18.553616531300104,75000,850000
+189441,Lucas Ocampos,2013-2014,FR1,ligue-1,France,20,Attack,Left Winger,Argentina,both,187,368,Sevilla Fútbol Club S.A.D.,34,1349.0,39.6764705882353,30.822757623925423,9000000,50000000
+335725,Shapi Suleymanov,2021-2022,TR1,super-lig,Turkey,23,Attack,Right Winger,Russia,left,171,605,Aris Thessalonikis,31,2014.0,64.96774193548387,23.906381751522577,2000000,12000000
+51972,Robbie Kruse,2012-2013,L1,bundesliga,Germany,25,Attack,Left Winger,Australia,right,179,15,Bayer 04 Leverkusen Fußball,30,2560.0,85.33333333333333,13.374935098492585,200000,2750000
+213672,Tom Rogic,2016-2017,SC1,scottish-premiership,Scotland,25,Midfield,Attacking Midfield,Australia,right,188,371,The Celtic Football Club,22,1272.0,57.81818181818182,27.30240809165569,800000,3000000
+747243,Gyan de Regt,2023-2024,NL1,eredivisie,Netherlands,21,Attack,Left Winger,Netherlands,,176,499,Vitesse Arnhem,26,1182.0,45.46153846153846,29.607991085088408,400000,400000
+540302,Mateo Klimowicz,2020-2021,L1,bundesliga,Germany,21,Midfield,Attacking Midfield,Germany,right,179,79,Verein für Bewegungsspiele Stuttgart 1893,25,1195.0,47.8,26.449952740978574,1800000,5000000
+184440,Tayfur Bingöl,2017-2018,TR1,super-lig,Turkey,25,Attack,Left Winger,Türkiye,right,180,7160,Eyüp Spor Kulübü,25,1204.0,48.16,30.095421578705288,700000,2100000
+618813,Carlos Martín,2024-2025,ES1,laliga,Spain,23,Attack,Left Winger,Spain,right,184,13,Club Atlético de Madrid S.A.D.,25,1290.0,51.6,26.563132345414385,1000000,1000000
+80444,Philippe Coutinho,2015-2016,EL,europa-league,,24,Midfield,Attacking Midfield,Brazil,right,172,405,Aston Villa Football Club,13,959.0,73.76923076923077,22.894923341057495,7500000,150000000
+104414,Raphael Holzhauser,2012-2013,L1,bundesliga,Germany,20,Midfield,Attacking Midfield,Austria,left,193,2727,Oud-Heverlee Leuven,21,1150.0,54.76190476190476,28.845903830534652,300000,4200000
+248483,Chris Ikonomidis,2016-2017,DK1,superligaen,Denmark,22,Attack,Left Winger,Australia,right,180,398,Società Sportiva Lazio S.p.A.,16,956.0,59.75,25.740289431162193,450000,1250000
+315779,Christian Pulisic,2021-2022,GB1,premier-league,England,24,Attack,Right Winger,United States,right,177,5,Associazione Calcio Milan,22,1286.0,58.45454545454545,33.6880438363622,40000000,60000000
+292818,Jonathan Bamba,2019-2020,FR1,ligue-1,France,24,Attack,Left Winger,Cote d'Ivoire,right,175,940,Real Club Celta de Vigo S. A. D.,26,1942.0,74.6923076923077,25.901840194159696,9000000,25000000
+605326,Pedro Vitor,2019-2020,UKR1,premier-liga,Ukraine,22,Attack,Left Winger,Brazil,left,177,18105,PFK Lviv,13,936.0,72.0,26.637163166119276,350000,400000
+140803,Anthony Limbombe,2018-2019,FR1,ligue-1,France,25,Attack,Left Winger,Belgium,right,177,723,Almere City FC,29,1233.0,42.51724137931034,35.367646124530424,700000,8000000
+370833,Doğukan Sinik,2021-2022,TR1,super-lig,Turkey,23,Attack,Left Winger,Türkiye,right,180,7775,Hatayspor,32,2308.0,72.125,20.20171712998675,2000000,4000000
+409344,Calvin Stengs,2018-2019,NL1,eredivisie,Netherlands,21,Midfield,Attacking Midfield,Netherlands,left,187,234,Feyenoord Rotterdam,21,1693.0,80.61904761904762,16.887516354300892,15000000,20000000
+295810,Alexandru Cicâldău,2021-2022,TR1,super-lig,Turkey,25,Midfield,Attacking Midfield,Romania,right,178,2293,Konyaspor,32,2206.0,68.9375,23.7932993456141,3000000,9000000
+96454,Maxime Lestienne,2014-2015,IT1,serie-a,Italy,23,Attack,Left Winger,Belgium,left,176,3057,Royal Standard Club de Liège,23,990.0,43.04347826086956,28.224993951352324,1000000,10000000
+746695,Kamaldeen Sulemana,2020-2021,DK1,superligaen,Denmark,19,Attack,Left Winger,Ghana,right,175,180,Southampton FC,20,1737.0,86.85,6.117801892837003,18000000,22000000
+157588,Ahmet Ilhan Özek,2012-2013,TR1,super-lig,Turkey,25,Attack,Right Winger,Turkey,both,181,820,Gençlerbirliği Spor Kulübü,27,2046.0,75.77777777777777,23.791273428676,50000,3000000
+225339,Queensy Menig,2015-2016,NL1,eredivisie,Netherlands,21,Attack,Left Winger,Netherlands,right,174,2381,Sivasspor,33,2356.0,71.39393939393939,24.703010973317443,1700000,2800000
+111376,Massimo Bruno,2016-2017,BE1,jupiler-pro-league,Belgium,24,Attack,Right Winger,Belgium,right,178,601,KV Kortrijk,23,1119.0,48.65217391304348,30.934163885162665,450000,8000000
+537382,Bryan Gil,2020-2021,ES1,laliga,Spain,20,Attack,Left Winger,Spain,left,175,12321,Girona Fútbol Club S. A. D.,32,2527.0,78.96875,20.699463119547328,14000000,30000000
+746180,Nikita Krivtsov,2021-2022,RU1,premier-liga,Russia,20,Midfield,Attacking Midfield,Russia,right,186,16704,FK Krasnodar,20,1059.0,52.95,33.05824405500086,3500000,3500000
+284884,Óscar Rodríguez,2022-2023,ES1,laliga,Spain,25,Midfield,Attacking Midfield,Spain,right,174,1244,CD Leganés,33,1768.0,53.57575757575758,31.803402050752943,2500000,15000000
+273432,Mohamed Rayhi,2016-2017,NL1,eredivisie,Netherlands,23,Attack,Left Winger,Morocco,right,178,468,Sparta Rotterdam,26,1942.0,74.6923076923077,31.3329136738022,650000,1200000
+350311,Hélder Ferreira,2019-2020,PO1,liga-portugal-bwin,Portugal,23,Attack,Right Winger,Portugal,right,179,2995,FC Paços de Ferreira,28,1940.0,69.28571428571429,18.116403661672287,600000,1500000
+335380,Pedro Nuno,2017-2018,PO1,liga-portugal-bwin,Portugal,23,Midfield,Attacking Midfield,Portugal,right,174,2457,B SAD,29,1846.0,63.6551724137931,21.15994241252343,200000,900000
+655488,Gabriel Martinelli,2021-2022,GB1,premier-league,England,21,Attack,Left Winger,Brazil,right,178,11,Arsenal Football Club,29,1867.0,64.37931034482759,29.1102704865523,70000000,85000000
+399260,Kyle McAllister,2020-2021,SC1,scottish-premiership,Scotland,22,Attack,Right Winger,Scotland,left,178,465,Saint Mirren Football Club,30,1166.0,38.86666666666667,26.449616674391,300000,350000
+76326,Tjaronn Chery,2012-2013,NL1,eredivisie,Netherlands,25,Midfield,Attacking Midfield,Suriname,left,171,1096,Royal Antwerp Football Club,32,2786.0,87.0625,10.404138299253814,350000,4500000
+454121,Galeno,2019-2020,PO1,liga-portugal-bwin,Portugal,23,Attack,Left Winger,Brazil,right,179,720,Futebol Clube do Porto,23,1343.0,58.391304347826086,27.843880180680063,25000000,25000000
+503987,Noni Madueke,2024-2025,GB1,premier-league,England,23,Attack,Right Winger,England,left,182,631,Chelsea Football Club,24,1656.0,69.0,26.291633650269816,28000000,30000000
+480975,Allahyar Sayyadmanesh,2020-2021,UKR1,premier-liga,Ukraine,20,Attack,Right Winger,Iran,right,182,968,Koninklijke Voetbal Club Westerlo,19,1020.0,53.68421052631579,33.95826018663275,1800000,4000000
+215122,Ivo Rodrigues,2016-2017,PO1,liga-portugal-bwin,Portugal,22,Midfield,Attacking Midfield,Portugal,right,180,8024,Futebol Clube de Arouca,26,1624.0,62.46153846153846,29.16693434647525,1500000,2000000
+55042,Diego Rigonato,2012-2013,FR1,ligue-1,France,25,Midfield,Attacking Midfield,Brazil,left,175,1421,Stade Reims,29,2289.0,78.93103448275862,14.486452730843013,250000,2500000
+279254,Sander Coopman,2017-2018,BE1,jupiler-pro-league,Belgium,23,Midfield,Attacking Midfield,Belgium,right,183,1096,Royal Antwerp Football Club,23,1888.0,82.08695652173913,15.3081763985879,300000,2000000
+232964,Emiliano Marcondes,2014-2015,DK1,superligaen,Denmark,20,Midfield,Attacking Midfield,Denmark,right,182,989,Association Football Club Bournemouth,24,1043.0,43.458333333333336,34.7406812045411,1500000,2800000
+213268,Alireza Jahanbakhsh,2015-2016,NL1,eredivisie,Netherlands,23,Attack,Right Winger,Iran,right,181,234,Feyenoord Rotterdam,23,1670.0,72.6086956521739,20.05804431585835,3000000,18000000

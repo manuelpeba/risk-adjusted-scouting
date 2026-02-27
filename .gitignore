@@ -16,7 +16,8 @@ db/
 *.parquet
 
 # Reports cache
-reports/**/.cache/
+reports/*.csv
+reports/tables/*.csv
 
 # OS
 .DS_Store

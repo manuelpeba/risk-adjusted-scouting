@@ -18,7 +18,8 @@ def main():
     con.register("df", df)
     con.execute(f"CREATE TABLE {TABLE_NAME} AS SELECT * FROM df")
 
-    rows = con.execute(f"SELECT COUNT(*) FROM {TABLE_NAME}").fetchone()[0]
+    res = con.execute(f"SELECT COUNT(*) FROM {TABLE_NAME}")
+    rows = res.fetchone()[0] # type: ignore
     print(f"Loaded {rows} rows into {TABLE_NAME}")
 
     con.close()

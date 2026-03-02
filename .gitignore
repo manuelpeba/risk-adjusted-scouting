@@ -22,3 +22,7 @@ reports/tables/*.csv
 # OS
 .DS_Store
 Thumbs.db
+
+#reports/
+reports/
+notebooks/reports/

@@ -1,299 +1,221 @@
 
-# Risk-Adjusted Scouting Model
+# Risk-Adjusted Scouting  
+### Budget-Constrained Football Recruitment Decision System (v1.0)
 
-### Budget-Constrained Recruitment Optimisation for Attacking Profiles
-
----
-
-## 1. Project Overview
-
-This project implements a **risk-adjusted, budget-constrained scouting decision system** for identifying high-upside attacking players (wingers and attacking midfielders) in European football.
-
-It moves beyond static ranking and builds a **multi-layer decision architecture**:
-
-1. Data engineering backbone (DuckDB relational model)
-2. Interpretable Talent Score (league + position adjusted)
-3. Explicit Availability Risk modelling
-4. Risk-adjusted value metric (λ-sensitive)
-5. Budget-constrained optimisation via MILP
-
-The final output is not “who is the best player”, but:
-
-> Which combination of players maximises long-term sporting value under explicit financial and risk constraints?
+End-to-end football recruitment modelling framework that integrates performance analytics, risk modelling, financial constraints, and mixed-integer optimisation.
 
 ---
 
-## 2. Architecture
+## 🔎 Project Overview
 
-### Data Stack
+This project builds a **club-ready recruitment decision system**, not just a ranking model.
 
-* **Storage engine:** DuckDB
-* **Sources:** Transfermarkt + FBref
-* **Processing:** pandas + SQL
-* **Optimisation:** SciPy MILP (HiGHS backend)
+It combines:
 
-Dependencies (see requirements): 
+- Multi-source data ingestion (FBref + Transfermarkt)
+- Position-aware talent scoring
+- Risk-adjusted evaluation
+- Total Cost of Ownership (TCO) modelling
+- Budget-constrained squad optimisation (MILP)
+- Executive reporting layer
 
----
-
-### Relational Model
-
-The project uses a structured dimensional schema implemented in DuckDB.
-
-Core components:
-
-* `dim_player`
-* `dim_club`
-* `dim_competition`
-* `fact_player_season_availability`
-* `fact_player_market_value`
-* `fact_player_season_fbref_tm`
-* `scouting_universe_base`
-* `talent_score_v1_scored_universe`
-* `risk_adjusted_universe_v1`
-
-Full schema documentation: 
+The objective is to simulate realistic recruitment decisions under financial and structural constraints.
 
 ---
 
-## 3. Pipeline Structure
+## 🧠 Core Methodology
 
-### Notebook 01 — Scouting Universe & EDA
+### 1️⃣ Data Architecture
 
-* Builds filtered modelling universe
-* Age 18–25
-* Minutes ≥ 900
-* Attacking / midfield profiles
-* Initial descriptive validation
-
----
-
-### Notebook 02 — Talent Score v1
-
-Implements an interpretable composite score based on league-season standardisation.
-
-Methodology documented here: 
-
-Core design:
-
-[
-Talent_i = \sum w_m Z_{i,m}
-]
-
-Validation:
-
-* Correlation vs PCA ≈ 0.99
-* Context normalisation (league + position)
+- Data ingestion into **DuckDB**
+- Structured fact tables:
+  - `fact_player_season_fbref_tm`
+  - `fact_player_season_availability`
+  - `fact_player_market_value`
+- Relational modelling with season alignment
+- Clean joins and deduplication logic
 
 ---
 
-### Notebook 03 — Risk-Adjusted Value & Sensitivity
+### 2️⃣ Talent Modelling
 
-Separates performance from availability risk.
+Position-aware standardisation:
 
-Risk proxy components:
+\[
+Talent = w_1 \cdot z(g90) + w_2 \cdot z(a90) + w_3 \cdot z(minutes)
+\]
 
-* Age distance from peak
-* Minutes volatility
-
-Decision metric:
-
-[
-Value(\lambda) = Talent - \lambda \cdot Risk
-]
-
-Implements λ-sensitivity grid and rank stability diagnostics.
-
-Output table:
-
-* `risk_adjusted_universe_v1`
+- Computed within positional groups (GK / DF / MF / FW)
+- Z-score normalisation
+- Weighted composite scoring
 
 ---
 
-### Notebook 04 — Budget-Constrained Optimisation
+### 3️⃣ Risk Modelling
 
-Formulates shortlist construction as a **Mixed-Integer Linear Programming (MILP)** problem.
+Risk proxy:
 
-Objective:
+\[
+Risk = z(|age - 24|) + z(minutes\ volatility)
+\]
 
-[
-\max \sum_i ObjectiveScore_i
-]
+Captures:
+- Age distance from peak
+- Availability instability
+
+---
+
+### 4️⃣ Financial Modelling — TCO
+
+Total Cost of Ownership:
+
+\[
+TCO = Transfer\ Fee + \sum_{t=1}^{T} \frac{Wage}{(1+r)^t}
+\]
+
+Parameters:
+- Wage ratio: 15% of market value
+- Contract length: 4 years
+- Discount rate: 8%
+
+This transforms scouting into a capital allocation problem.
+
+---
+
+### 5️⃣ Decision Layer — MILP Optimisation
+
+Binary Mixed-Integer Linear Programming (HiGHS via SciPy):
+
+\[
+\max_x \sum_i x_i (Talent_i - \lambda Risk_i)
+\]
 
 Subject to:
 
-* Budget constraint
-* Maximum K signings
-* Binary decision variables
+- Budget constraint (TCO)
+- Exact squad size
+- Hard positional quotas
+- Optional:
+  - Maximum average age
+  - Maximum total risk
 
-Implemented using `scipy.optimize.milp` (HiGHS).
-
-This converts the model from ranking tool → **decision engine**.
-
----
-
-## 4. Data Engineering Layer
-
-### FBref ingestion
-
-Robust HTML parsing (including commented tables):
-
-`load_fbref_standard.py`
-
-Loads local HTML → Parquet → DuckDB staging.
+Implemented using:
+- `scipy.optimize.milp`
+- `LinearConstraint`
+- Binary integrality
 
 ---
 
-### DuckDB build
+## 📊 Decision Scenarios Implemented
 
-Transfermarkt ingestion and universe construction:
+### K-Signings Optimisation
+- Tight budget
+- Baseline
+- Loose budget
+- Risk-averse
 
-`build_duckdb.py`
+### Full Squad Construction
+- 18-man squad (2 GK, 6 DF, 6 MF, 4 FW)
+- 23-man squad (3 GK, 8 DF, 7 MF, 5 FW)
 
 Includes:
-
-* Fact aggregation
-* Season inference
-* Availability metrics
-* Universe filtering logic
+- Budget sensitivity analysis
+- Lambda sensitivity sweep
+- Age distribution visualisation
 
 ---
 
-## 5. Key Design Principles
+## 📈 Reporting Layer
 
-### 1. Separation of Dimensions
+Notebook 05 produces:
 
-Talent and Risk are modelled independently.
+- Scenario comparison tables
+- Shortlists per scenario
+- Risk-talent frontier plots
+- Budget sensitivity curves
+- Age distribution histograms
+- Exportable CSV reports
 
-### 2. Interpretability
-
-No black-box models.
-Every score is decomposable and auditable.
-
-### 3. Cross-League Comparability
-
-All performance metrics are standardised within league-season context.
-
-### 4. Decision Orientation
-
-Final layer supports:
-
-* Budget simulation
-* Risk appetite tuning
-* Scenario comparison
+Outputs saved under `reports/`.
 
 ---
 
-## 6. Example Output (Optimisation Layer)
-
-Given:
-
-* K = 3 signings
-* Budget = €180m
-* λ = 0.5
-
-The solver returns the optimal combination maximising:
-
-[
-\sum (Talent - \lambda \cdot Risk)
-]
-
-Scenarios supported:
-
-* Tight budget
-* Baseline
-* Risk-averse
-* Custom λ sweeps
-
----
-
-## 7. Reproducibility
-
-### 1. Install
+## 🏗 Project Structure
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate   # or .venv\Scripts\activate on Windows
-pip install -r requirements.txt
+risk-adjusted-scouting/
+│
+├── db/
+│ └── scouting.duckdb
+│
+├── notebooks/
+│ ├── 02_talent_score_v1.ipynb
+│ ├── 03_risk_adjusted_value_and_sensitivity.ipynb
+│ ├── 04_budget_constrained_optimisation.ipynb
+│ └── 05_reporting_and_executive_summary.ipynb
+│
+├── reports/
+│ ├── tables/
+│ └── figures/
+│
+└── README.md
 ```
-
-### 2. Build Database
-
-```bash
-python src/build_duckdb.py
-```
-
-### 3. Load FBref Data
-
-```bash
-python src/load_fbref_standard.py
-python src/load_fbref_to_duckdb.py
-```
-
-### 4. Run Notebooks in Order
-
-1. 01_scouting_eda_and_player_universe.ipynb
-2. 02_talent_score_v1.ipynb
-3. 03_risk_adjusted_value_and_sensitivity.ipynb
-4. 04_budget_constrained_optimisation.ipynb
 
 ---
 
-## 8. Current Project Status
+## 🚀 How to Run
 
-Detailed tracking document: 
+1. Ensure DuckDB database exists at:
 
-Current state:
+`db/scouting.duckdb`
 
-* ✅ Data backbone stable
-* ✅ Talent Score validated
-* ✅ Risk layer integrated
-* ✅ Budget optimisation functional
-* 🔜 Extensions planned
 
----
-
-## 9. Extensions (Roadmap)
-
-### Short Term
-
-* Multi-season trend integration
-* Salary proxy integration
-* Pareto frontier visualisation
-
-### Medium Term
-
-* Monte Carlo risk simulation
-* Probabilistic injury proxy
-* Position-slot constrained optimisation
-
-### Long Term
-
-* Predictive resale modelling
-* Multi-club portfolio allocation
-* Bayesian weight tuning
+2. Run notebooks in order:
+- 02 → Feature engineering
+- 03 → Risk-adjusted universe
+- 04 → Optimisation layer
+- 05 → Reporting layer
 
 ---
 
-## 10. Professional Positioning
+## 🎯 What Makes This Different
 
-This project demonstrates:
+This is not a ranking notebook.
 
-* Data engineering (DuckDB relational modelling)
-* Entity resolution logic
-* Statistical validation methodology
-* Cross-league normalisation
-* Multi-objective modelling
-* Constrained optimisation
-* Decision-support system design
+It is a **capital allocation and optimisation framework** that:
 
-It is positioned for:
+- Integrates performance and financial modelling
+- Applies hard structural constraints
+- Produces executable squad configurations
+- Supports scenario planning
 
-* Football recruitment analytics
-* Hybrid data engineer / data scientist roles
-* Applied optimisation and decision modelling roles
+It bridges analytics and actual decision-making.
 
-## Author
+---
+
+## 🔮 Future Extensions (v2.0 Ideas)
+
+- CVaR / downside risk modelling
+- Robust optimisation under parameter uncertainty
+- Monte Carlo salary projections
+- Multi-season squad planning
+- Injury probability modelling
+
+---
+
+## 📌 Status
+
+**v1.0 — End-to-end pipeline complete**
+
+Includes:
+- Data ingestion
+- Risk-adjusted modelling
+- MILP optimisation
+- Executive reporting
+
+---
+
+## 👤 Author
 
 Manuel Pérez Bañuls
 Data Science & Football Performance Analytics

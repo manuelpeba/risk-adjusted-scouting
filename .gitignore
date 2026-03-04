@@ -26,3 +26,6 @@ Thumbs.db
 #reports/
 reports/
 notebooks/reports/
+
+# notebook generation scripts
+src/features/build_notebook_*.py

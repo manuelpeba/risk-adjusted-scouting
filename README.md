@@ -1,253 +1,334 @@
 
-# Risk-Adjusted Scouting  
-### Budget-Constrained Football Recruitment Decision System (v1.0)
+# Risk‑Adjusted Scouting
+### Budget‑Constrained Football Recruitment Decision System (v2.0)
 
-End-to-end football recruitment modelling framework integrating performance analytics, risk modelling, financial constraints, and mixed-integer optimisation.
-
----
-
-## 🔎 Project Overview
-
-This project builds a **club-ready recruitment decision system**, not just a ranking model.
-
-It combines:
-
-- Multi-source data ingestion (FBref + Transfermarkt)
-- Position-aware talent scoring
-- Risk-adjusted evaluation
-- Total Cost of Ownership (TCO) modelling
-- Budget-constrained squad optimisation (MILP)
-- Executive reporting layer
-
-The objective is to simulate realistic recruitment decisions under financial and structural constraints.
+End‑to‑end football recruitment modelling framework integrating **performance analytics, risk modelling, financial constraints, scenario simulation, and mixed‑integer optimisation**.
 
 ---
 
-# 📊 Key Figures
+# 🔎 Project Overview
 
-## 18-man Budget Sensitivity
+This project builds a **club‑ready recruitment decision system**, not just a ranking model.
 
-Increasing budget beyond ~€600m TCO yields diminishing marginal gains in objective value, indicating structural stability of the optimal core squad.
+It integrates:
 
-![18-man budget sensitivity](assets/18man_budget_sensitivity.png)
+- Multi‑source football data (FBref + Transfermarkt)
+- Position‑aware talent modelling
+- Player risk estimation
+- Financial modelling via Total Cost of Ownership (TCO)
+- Budget‑constrained squad optimisation (MILP)
+- Scenario‑based uncertainty simulation
+- **CVaR robust optimisation**
+- Executive reporting outputs
+
+The goal is to simulate **realistic recruitment decisions under financial and structural constraints**, closer to how clubs actually allocate transfer budgets.
 
 ---
 
-## Age Distribution — Selected 18-Man Squad
+# 🧠 System Architecture
 
-The optimisation naturally produces a youth-oriented squad structure concentrated around 23–26 years old (avg ~24.5).
+```mermaid
+flowchart LR
 
-![Age distribution 18-man](assets/age_distribution_squad18.png)
+A[FBref Data] --> D[DuckDB Data Warehouse]
+B[Transfermarkt Data] --> D
+
+D --> E[Feature Engineering]
+
+E --> F[Talent Score]
+E --> G[Risk Model]
+E --> H[Financial Model]
+
+F --> I[Deterministic Optimisation]
+G --> I
+H --> I
+
+F --> J[Scenario Engine]
+G --> J
+
+J --> K[Robust CVaR Optimisation]
+
+I --> L[Squad Selection]
+K --> L
+
+L --> M[Executive Reporting]
+```
 
 ---
 
-# 🧠 Core Methodology
+# 📊 Analytical Pipeline
+
+```mermaid
+flowchart TD
+
+A[Raw Football Data] --> B[Data Cleaning]
+B --> C[Feature Engineering]
+
+C --> D[Talent Score]
+C --> E[Risk Metrics]
+C --> F[Cost Proxy]
+
+D --> G[Player Value]
+
+E --> G
+F --> H[TCO]
+
+G --> I[Deterministic MILP]
+
+G --> J[Scenario Simulation]
+J --> K[CVaR Optimisation]
+
+I --> L[Squad Selection]
+K --> L
+
+L --> M[Performance Analysis]
+```
+
+---
+
+# 📊 Key Outputs
+
+## Budget vs Downside Performance
+
+Robust optimisation significantly improves **tail performance** of the squad portfolio.
+
+Deterministic optimisation maximises expected value, while CVaR optimisation reduces exposure to extreme negative scenarios.
+
+*(Generated in Notebook 06)*
+
+---
+
+# 🧩 Core Methodology
 
 ## 1️⃣ Data Architecture
 
 - FBref + Transfermarkt ingestion
-- Relational modelling in DuckDB
+- Relational modelling in **DuckDB**
 - Fact tables:
-  - `fact_player_season_fbref_tm`
-  - `fact_player_season_availability`
-  - `fact_player_market_value`
-- Strict season alignment
-- Deduplicated availability joins (one row per player-season)
+
+```
+fact_player_season_fbref_tm
+fact_player_season_availability
+fact_player_market_value
+```
+
+Key properties:
+
+- strict season alignment
+- deduplicated joins
+- one row per `(player, season)`
 
 ---
 
-## 2️⃣ Talent Modelling
+## 2️⃣ Talent Model
 
-Position-aware composite score:
+Position‑aware composite score:
 
-\[
-Talent = w_1 \cdot z(g90) + w_2 \cdot z(a90) + w_3 \cdot z(minutes)
-\]
+Talent = w1·z(goals90) + w2·z(assists90) + w3·z(minutes)
 
-- Computed within positional groups (GK / DF / MF / FW)
-- Z-score normalisation
-- Weighted aggregation
+Features:
+
+- computed within positional groups
+- Z‑score normalisation
+- weighted aggregation
+
+Produces a **cross‑position comparable performance metric**.
 
 ---
 
-## 3️⃣ Risk Modelling
+## 3️⃣ Risk Model
 
-\[
-Risk = z(|age - 24|) + z(minutes\ volatility)
-\]
+Risk = z(|age − 24|) + z(minutes volatility)
 
 Captures:
 
-- Distance from peak age
-- Availability instability
+- deviation from peak age
+- playing time instability
 
-Negative aggregated risk → safer-than-average profiles.
-
----
-
-## 4️⃣ Financial Modelling — Total Cost of Ownership
-
-\[
-TCO = Transfer\ Fee + \sum_{t=1}^{T} \frac{Wage}{(1+r)^t}
-\]
-
-Parameters:
-
-- Wage ratio: 15% of market value
-- Contract length: 4 years
-- Discount rate: 8%
-
-Transforms scouting into a capital allocation problem.
+Negative values indicate **safer‑than‑average players**.
 
 ---
 
-## 5️⃣ Decision Layer — Binary MILP Optimisation
+## 4️⃣ Financial Model — Total Cost of Ownership
 
-\[
-\max_x \sum_i x_i (Talent_i - \lambda Risk_i)
-\]
+Recruitment is treated as a **capital allocation problem**.
+
+TCO = Transfer Fee + discounted wage stream
+
+Assumptions:
+
+- Wage ratio ≈ 15% of market value
+- Contract length ≈ 4 years
+- Discount rate ≈ 8%
+
+---
+
+## 5️⃣ Deterministic Optimisation
+
+Binary MILP formulation:
+
+max Σ xᵢ (Talentᵢ − λ Riskᵢ)
 
 Subject to:
 
-- Budget constraint (TCO)
-- Exact squad size
-- Hard positional quotas
-- Optional:
-  - Maximum average age
-  - Maximum total risk
+- transfer budget
+- squad size
+- positional quotas
 
-Implemented using:
+Solved using:
 
 - `scipy.optimize.milp`
 - HiGHS solver
-- Binary integrality constraints
-
-Supports:
-
-- K-signings reinforcement
-- 18-man squad construction
-- 23-man squad construction
-- Budget sensitivity analysis
-- Lambda sensitivity sweep
 
 ---
 
-# 📌 Key Insights (v1.0)
+## 6️⃣ Scenario Simulation
 
-- **Decision-layer validation:** The MILP optimiser saturates TCO budgets while satisfying structural constraints, producing executable squad configurations rather than generic rankings.
-  
-- **Diminishing returns:** For the 18-man configuration, increasing TCO beyond ~€600m generates marginal objective gains, indicating early stabilisation of the optimal core.
+Player value is simulated under uncertainty.
 
-- **Endogenous youth bias:** The selected squads cluster around 23–26 years old without explicitly enforcing youth constraints — a natural outcome of combining risk modelling and financial realism.
+Two engines are implemented:
 
-- **Risk interpretation:** Risk is standardised; negative total risk reflects safer-than-average aggregated profiles.
+### Regime Stress Testing
 
-- **Structural robustness:** Ensuring one row per (player, season) in availability data is critical. After deduplication, optimisation outputs are structurally consistent.
+Models macro football environments:
+
+- normal season
+- moderate performance shock
+- severe negative shock
+
+### Monte Carlo Factor Model
+
+Simulates player volatility with:
+
+- common performance shocks
+- idiosyncratic noise
+
+---
+
+## 7️⃣ Robust Optimisation — CVaR
+
+To control downside risk, the optimisation problem is reformulated using **Conditional Value at Risk (CVaR)**.
+
+The model maximises expected squad value while protecting against **worst‑case scenarios**.
+
+This produces **downside‑aware recruitment strategies**.
+
+---
+
+# 📈 Key Insights
+
+### Robust optimisation improves downside stability
+
+Across budgets:
+
+- CVaR squads improve **P10 and CVaR**
+- selected players exhibit **lower uncertainty (σ)**
+
+---
+
+### Robust squads are structurally different
+
+Deterministic vs robust squads show **large Hamming distances**, indicating fundamentally different recruitment strategies.
+
+---
+
+### Robust premium trade‑off
+
+Robust optimisation sacrifices some expected value but dramatically improves downside protection.
+
+This mirrors classical **portfolio optimisation trade‑offs**.
 
 ---
 
 # 🏗 Project Structure
 
-
-```bash
+```
 risk-adjusted-scouting/
 │
 ├── db/
-│ └── scouting.duckdb
+│   └── scouting.duckdb
 │
 ├── notebooks/
-│ ├── 02_talent_score_v1.ipynb
-│ ├── 03_risk_adjusted_value_and_sensitivity.ipynb
-│ ├── 04_budget_constrained_optimisation.ipynb
-│ └── 05_reporting_and_executive_summary.ipynb
+│   ├── 02_talent_score_v1.ipynb
+│   ├── 03_risk_adjusted_value_and_sensitivity.ipynb
+│   ├── 04_budget_constrained_optimisation.ipynb
+│   ├── 05_reporting_and_executive_summary.ipynb
+│   └── 06_robust_optimisation_cvar.ipynb
 │
 ├── assets/
-│ ├── 18man_budget_sensitivity.png
-│ └── age_distribution_squad18.png
+│   ├── 18man_budget_sensitivity.png
+│   └── age_distribution_squad18.png
 │
 └── README.md
 ```
 
 ---
 
-## 🚀 How to Run
+# 🚀 Running the Project
 
-1. Ensure DuckDB database exists at:
+1️⃣ Ensure database exists:
 
-`db/scouting.duckdb`
+```
+db/scouting.duckdb
+```
 
-2. Execute notebooks sequentially:
+2️⃣ Run notebooks sequentially:
 
-- 02 → Feature engineering
-- 03 → Risk-adjusted modelling
-- 04 → MILP optimisation layer
-- 05 → Reporting layer
-
----
-
-# 🎯 What Makes This Different
-
-This is not a scouting ranking notebook.
-
-It is a **capital allocation and optimisation framework** that:
-
-- Integrates performance and financial modelling
-- Applies hard structural constraints
-- Produces executable squad configurations
-- Supports scenario planning
-
-It bridges analytics and real recruitment decision-making.
+```
+02 → Feature engineering
+03 → Risk‑adjusted modelling
+04 → Deterministic optimisation
+05 → Reporting
+06 → Robust CVaR optimisation
+```
 
 ---
 
-# 🧾 5-Minute Technical Walkthrough
+# 🎯 Why This Project Is Different
 
-**Problem framing:**  
-Build an end-to-end recruitment decision system that outputs executable squad configurations under financial and structural constraints.
+Most football analytics projects stop at **player ranking models**.
 
-**Data layer:**  
-Structured relational modelling in DuckDB with season alignment and join integrity validation.
+This project implements a **decision system** that:
 
-**Modelling layer:**  
-Position-aware talent scoring + standardised risk proxy.
+- integrates performance + financial modelling
+- enforces squad constraints
+- models uncertainty
+- applies robust optimisation
+- outputs **executable squad configurations**
 
-**Financial realism:**  
-Total Cost of Ownership with discounted wage streams.
-
-**Optimisation:**  
-Binary MILP via SciPy HiGHS with budget, squad size, and positional constraints.
-
-**Outputs:**  
-Scenario shortlists, sensitivity curves, and executive-ready tables.
+It bridges the gap between **analytics research and real recruitment decisions**.
 
 ---
 
-# 🔮 Future Extensions (v2.0 Ideas)
+# 🔮 Future Extensions
 
-- CVaR-based downside risk modelling
-- Robust optimisation under parameter uncertainty
-- Multi-season planning horizon
-- Injury probability modelling
-- Market inefficiency detection
+Potential improvements:
+
+- correlated positional shocks
+- injury probability modelling
+- multi‑season squad planning
+- transfer fee vs wage decomposition
+- Bayesian uncertainty modelling
 
 ---
 
 # 📌 Status
 
-**v1.0 — End-to-end pipeline complete**
+**v2.0 — Robust optimisation implemented**
 
-Includes:
+Pipeline includes:
 
 - Data ingestion
-- Risk-adjusted modelling
-- MILP decision layer
-- Executive reporting
-- Budget sensitivity analysis
+- Risk‑adjusted modelling
+- Deterministic MILP optimisation
+- Scenario simulation
+- CVaR robust optimisation
+- Budget frontier analysis
 
 ---
 
-## 👤 Author
+# 👤 Author
 
-Manuel Pérez Bañuls
-Data Science & Football Performance Analytics
+Manuel Pérez Bañuls  
+Data Science & Football Performance Analytics  
 Portfolio Project

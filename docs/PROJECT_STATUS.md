@@ -1,211 +1,351 @@
+
 # Risk-Adjusted Scouting — Project Status
 
-------------------------------------------------------------------------
+---
 
-**Last updated:** 2026-03-03
+**Last updated:** 2026-03-04  
+**Current release:** v2.0 (robust optimisation layer implemented)
 
-**Current release:** v1.0 (tagged)
-
-------------------------------------------------------------------------
+---
 
 # 0) Executive Summary
 
-The project is now an **end-to-end recruitment decision system**.
+The project has evolved into a **complete recruitment decision system** integrating:
 
-We have progressed from **performance modelling** → **risk adjustment** → **financial realism (TCO)** → **mixed-integer optimisation (MILP)** → **executive reporting**.
+performance modelling → risk adjustment → financial realism → deterministic optimisation → uncertainty modelling → **robust optimisation**.
 
-**v1.0 key deliverables completed:**
+The system now supports **downside-aware squad construction under budget constraints**, combining football analytics with financial and operations research methodologies.
 
-- ✅ DuckDB “lakehouse” with FBref + Transfermarkt relational backbone (`db/scouting.duckdb`)
-- ✅ Entity resolution outputs integrated (player/club mapping)
-- ✅ Talent Score (position-aware) with interpretable scoring architecture
-- ✅ Risk proxy + λ sensitivity (risk-adjusted decision metric)
-- ✅ **Notebook 04 — Decision Layer:** Budget-constrained optimisation (SciPy MILP / HiGHS)
-  - K-signings optimisation (attacking universe)
-  - Full squad construction (18-man, 23-man) with **hard positional quotas**
-  - TCO cost model (fee + discounted wages)
-  - λ sensitivity sweep + **budget sensitivity (18-man, 500–700)**
-  - **Data integrity fix:** availability joins aggregated to one row per (player, season) to prevent duplicate candidate selection
-- ✅ **Notebook 05 — Reporting Layer:** scenario tables + shortlists + executive figures exported under `reports/`
-- ✅ README updated with “Key Insights” and key figures (portfolio-ready)
-- ✅ Outputs generated under `/reports` (recommended: not versioned; keep only curated assets)
+---
 
-------------------------------------------------------------------------
+# 1) System Architecture Overview
 
-# 1) Current Architecture Status
+The pipeline now consists of **six integrated layers**:
 
-## Repository layout (high level)
+1. **Data Layer**
+2. **Talent Modelling**
+3. **Risk Modelling**
+4. **Financial Modelling (TCO)**
+5. **Deterministic Optimisation (MILP)**
+6. **Robust Optimisation (CVaR)**
 
-- `data/` (local raw/interim/processed, not versioned)
-- `db/` (DuckDB, not versioned)
-- `docs/` (methodology + project status)
-- `notebooks/` (01–05 notebooks; v1.0 complete)
-- `reports/` (generated outputs; recommended ignored by git)
-- `src/` (I/O loaders and DB build scripts)
+This architecture transforms raw performance data into **executable recruitment decisions under uncertainty**.
 
-## Data Layer
+---
 
-Database: `db/scouting.duckdb`
+# 2) Repository Structure
 
-Core tables/views used in v1.0:
+```
+risk-adjusted-scouting/
 
-- `fact_player_season_fbref_tm` (season performance backbone)
-- `fact_player_market_value` (Transfermarkt market values, used as cost proxy)
-- `fact_player_season_availability` (availability / minutes volatility proxy)
-- `risk_adjusted_universe_v1`
-- `risk_adjusted_universe_v2` (preferred optimisation universe)
+├── db/
+│   └── scouting.duckdb
+│
+├── notebooks/
+│   ├── 02_talent_score_v1.ipynb
+│   ├── 03_risk_adjusted_value_and_sensitivity.ipynb
+│   ├── 04_budget_constrained_optimisation.ipynb
+│   ├── 05_reporting_and_executive_summary.ipynb
+│   └── 06_robust_optimisation_cvar.ipynb
+│
+├── docs/
+│   └── PROJECT_STATUS.md
+│
+├── assets/
+│   └── figures used in README
+│
+└── src/
+    └── data ingestion scripts
+```
 
-**Critical integrity rule (v1.0):**
-- Availability must be **aggregated to one row per (player_id, season)** prior to joins to avoid row multiplication and unrealistic multi-selection.
+Local-only directories (not versioned):
 
-------------------------------------------------------------------------
+```
+data/
+db/
+reports/
+```
 
-# 2) Talent Score (Notebook 02) — Complete
+---
 
-- Position-aware, interpretable composite
-- Z-score normalisation within position groups
-- Output metric used downstream as the “upside” signal
+# 3) Data Layer
 
-------------------------------------------------------------------------
+Database: **DuckDB**
 
-# 3) Risk-Adjusted Value Layer (Notebook 03) — Complete
+```
+db/scouting.duckdb
+```
 
-## Risk proxy (v1.0)
+Core fact tables:
 
-Components:
+```
+fact_player_season_fbref_tm
+fact_player_market_value
+fact_player_season_availability
+```
 
-1. Age distance from peak (|age − 24|)
-2. Availability / minutes volatility proxy
+Optimisation universes:
 
-Combined (standardised) into `risk_score`.
+```
+risk_adjusted_universe_v1
+risk_adjusted_universe_v2
+```
 
-## Decision metric
+### Data integrity rules
 
-`Value(λ) = Talent − λ × Risk`
+- one row per `(player_id, season)`
+- availability aggregated before joins
+- deduplicated player-season keys
 
-- λ sweep implemented for sensitivity analysis
-- Efficient-frontier style diagnostics (risk vs talent)
+These rules prevent **duplicate candidate selection during optimisation**.
 
-**Note on sign convention:** because risk is standardised, negative values indicate “safer-than-average” profiles.
+---
 
-------------------------------------------------------------------------
+# 4) Talent Modelling — Notebook 02
 
-# 4) Decision Layer — Budget-Constrained Optimisation (Notebook 04) — Complete
+Position-aware composite performance score.
 
-Notebook 04 converts scouting signals into decisions using **binary MILP**.
+Key features:
 
-## Formal problem
+- Z-score normalisation within positional groups
+- interpretable feature aggregation
+- cross-position comparability
 
-Decision variable: `x_i ∈ {0,1}`
+Used as the **upside component** in recruitment decisions.
+
+---
+
+# 5) Risk Model — Notebook 03
+
+Risk proxy captures two key uncertainty drivers:
+
+```
+Risk = z(|age − 24|) + z(minutes volatility)
+```
+
+Interpretation:
+
+- positive values → riskier players
+- negative values → safer profiles
+
+Decision metric:
+
+```
+Value(λ) = Talent − λ × Risk
+```
+
+Includes λ-sensitivity analysis.
+
+---
+
+# 6) Financial Model — Total Cost of Ownership
+
+Transfers are framed as **capital allocation problems**.
+
+```
+TCO = Transfer Fee + discounted wage stream
+```
+
+Assumptions:
+
+- wage proxy ≈ 15% market value
+- contract horizon ≈ 4 years
+- discount rate ≈ 8%
+
+Used as the **budget constraint** in optimisation.
+
+---
+
+# 7) Deterministic Squad Optimisation — Notebook 04
+
+Binary Mixed Integer Linear Programming formulation.
+
+Decision variable:
+
+```
+x_i ∈ {0,1}
+```
 
 Objective:
 
-Maximise  Σ x_i · (Talent_i − λ · Risk_i)
+```
+max Σ x_i (Talent_i − λ Risk_i)
+```
 
 Constraints:
 
-- **K-signings:** Σ x_i = K
-- **Budget (TCO):** Σ x_i · TCO_i ≤ Budget
-- **Full squad constraints (18 / 23-man):**
-  - Σ x_i = squad_size
-  - Exact positional quotas (GK/DF/MF/FW)
-  - Optional constraints supported (policy levers):
-    - max average age
-    - max total risk
+```
+Σ x_i = squad_size
+Σ x_i TCO_i ≤ Budget
+position quotas (GK/DF/MF/FW)
+```
 
-## Cost model (TCO)
+Solved with:
 
-- Transfer fee proxy: market value (€m)
-- Wage proxy: ratio of market value
-- Discounted wage stream over contract horizon
-- TCO = fee + discounted wages
+```
+scipy.optimize.milp
+HiGHS solver
+```
 
-## Diagnostics added (v1.0)
+Outputs:
 
-- λ sensitivity sweep
-- Scenario simulation (tight/baseline/loose/risk-averse)
-- **Budget sensitivity (18-man):** varying budget 500–700
-- **Age distribution visualisation** for selected squads
+- optimal squad composition
+- sensitivity to λ and budget
+- structural squad diagnostics
 
-------------------------------------------------------------------------
+---
 
-# 5) Reporting Layer (Notebook 05) — Complete
+# 8) Reporting Layer — Notebook 05
 
-Notebook 05 consumes Notebook 04 exports and produces stakeholder-ready artefacts:
+Generates executive-ready outputs:
 
-- Scenario summary tables
-- Top shortlists per scenario
-- Figures (objective by scenario, risk-talent map)
-- Squad summary KPIs
-- Age distribution charts
+- shortlist tables
+- scenario summaries
+- squad composition statistics
+- age distribution figures
 
-Exports written under:
+Exports:
 
-- `reports/tables/`
-- `reports/figures/`
+```
+reports/tables/
+reports/figures/
+```
 
-Recommendation: keep `/reports` ignored in git; curate a small `/assets` folder for README figures if needed.
+These are intended for **decision-maker communication**.
 
-------------------------------------------------------------------------
+---
 
-# 6) Strategic Positioning (v1.0)
+# 9) Scenario Simulation Layer — Notebook 06
 
-This project demonstrates:
+Player performance uncertainty is modelled via scenario generation.
 
-- Data engineering: DuckDB modelling, robust joins, integrity guardrails
-- Analytics modelling: normalisation, interpretable scoring, proxy risk design
-- Financial modelling: discounted cash flow / TCO framing
-- Decision intelligence / OR: binary MILP with hard constraints (HiGHS)
-- Sensitivity analysis: λ and budget sweeps
-- Executive reporting: tables + figures for decision-makers
+Two engines implemented:
 
-Applicable to:
+### Regime Stress Testing
 
-- Sports recruitment analytics
-- Decision science / operations research portfolios
-- Resource allocation under constraints (generalizable outside football)
+Discrete macro scenarios:
 
-------------------------------------------------------------------------
+- normal environment
+- moderate performance shock
+- severe negative shock
 
-# 7) v2.0 Roadmap (Project Flagship Track) — Next Steps in Order (A → B → C)
+### Monte Carlo Factor Model
 
-## A) Robust Optimisation (CVaR / downside-aware decision-making)
+Performance shocks:
 
-Goal: move beyond deterministic optimisation to uncertainty-aware decisions.
+```
+T_i^(s) = μ_i + σ_i X_{i,s}
+```
 
-- Define uncertainty model for talent (and/or risk) using historical variability or bootstrapping
-- Optimise a downside objective:
-  - CVaRα(Value) or penalised downside deviations
-- Compare deterministic vs robust solutions:
-  - stability of selections
-  - downside performance guarantees
+Where:
 
-Deliverable: **Notebook 06 — Robust Optimisation (CVaR)** + figures + executive comparison.
+```
+X = common factor + idiosyncratic noise
+```
 
-## B) Multi-Season Squad Planning (multi-period optimisation)
+This simulates:
 
-Goal: extend from one-shot squad build to a planning horizon.
+- systemic performance shocks
+- individual player volatility.
 
-- Add contract horizon / squad evolution constraints
-- Introduce age trajectory constraints (avoid future age cliff)
-- Budget over multiple seasons
-- Re-optimise with multi-period structure (rolling horizon)
+---
 
-Deliverable: **Notebook 07 — Multi-Period Squad Planning** + scenario planning outputs.
+# 10) Robust Optimisation — CVaR
 
-## C) Market Inefficiency Layer (mispricing / “alpha” detection)
+To control downside risk, the optimisation problem is reformulated using **Conditional Value at Risk (CVaR)**.
 
-Goal: identify undervalued players vs market.
+The objective becomes:
 
-- Build model-implied value vs market cost gap:
-  - `Alpha_i = ModelValue_i − MarketCost_i`
-- Rank “best value” opportunities
-- Feed alpha as:
-  - a prior for shortlist
-  - or an additional objective term (multi-objective)
+```
+max CVaRα ( squad_value )
+```
 
-Deliverable: **Notebook 08 — Mispricing & Value Arbitrage** + executive report.
+This protects against **worst-case scenario outcomes**.
 
-------------------------------------------------------------------------
+Properties:
+
+- MILP-compatible formulation
+- solved using SciPy HiGHS
+- integrated with squad constraints
+
+---
+
+# 11) Key Empirical Insights
+
+### Robust optimisation improves downside stability
+
+Across budgets:
+
+- higher **P10**
+- improved **CVaR**
+- lower average player volatility (σ)
+
+---
+
+### Robust squads differ structurally
+
+Deterministic vs robust squads show **large Hamming distances**, indicating materially different recruitment strategies.
+
+---
+
+### Robust premium trade-off
+
+Robust squads sacrifice some expected value but deliver **substantially better downside protection**.
+
+This mirrors classical **portfolio optimisation trade-offs**.
+
+---
+
+# 12) Budget Sensitivity Results
+
+Budget sweeps demonstrate:
+
+- improved expected value with higher budgets
+- diminishing marginal gains
+- reduced volatility in robust solutions
+
+Robust optimisation becomes **more valuable under tighter budgets**.
+
+---
+
+# 13) Strategic Positioning
+
+This project demonstrates capabilities across multiple domains:
+
+### Data Engineering
+- DuckDB relational modelling
+- robust joins and entity resolution
+
+### Data Science
+- feature engineering
+- risk modelling
+- statistical normalisation
+
+### Financial Modelling
+- TCO / discounted cash flow framing
+
+### Operations Research
+- mixed integer optimisation
+- robust optimisation (CVaR)
+
+### Decision Intelligence
+- scenario simulation
+- executive reporting
+
+The framework generalises beyond football to **resource allocation problems under uncertainty**.
+
+---
+
+# 14) Future Extensions (Research Track)
+
+Potential extensions include:
+
+- correlated performance shocks
+- injury probability modelling
+- multi-season squad planning
+- transfer fee vs wage decomposition
+- Bayesian talent uncertainty models
+
+---
 
 End of file.

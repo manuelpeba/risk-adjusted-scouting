@@ -1,351 +1,198 @@
+# Risk‑Adjusted Scouting --- Project Status
 
-# Risk-Adjusted Scouting — Project Status
+Last updated: 2026‑03‑04
 
----
+------------------------------------------------------------------------
 
-**Last updated:** 2026-03-04  
-**Current release:** v2.0 (robust optimisation layer implemented)
+# Project Goal
 
----
+Build an end‑to‑end football recruitment decision framework integrating:
 
-# 0) Executive Summary
+-   performance analytics
+-   risk modelling
+-   financial constraints
+-   optimisation under uncertainty
 
-The project has evolved into a **complete recruitment decision system** integrating:
+The objective is to move from **player evaluation** toward **structured
+recruitment decision systems**.
 
-performance modelling → risk adjustment → financial realism → deterministic optimisation → uncertainty modelling → **robust optimisation**.
+------------------------------------------------------------------------
 
-The system now supports **downside-aware squad construction under budget constraints**, combining football analytics with financial and operations research methodologies.
+# Completed Components
 
----
+## Data Engineering
 
-# 1) System Architecture Overview
+Implemented data ingestion and integration pipeline.
 
-The pipeline now consists of **six integrated layers**:
+Sources:
 
-1. **Data Layer**
-2. **Talent Modelling**
-3. **Risk Modelling**
-4. **Financial Modelling (TCO)**
-5. **Deterministic Optimisation (MILP)**
-6. **Robust Optimisation (CVaR)**
+-   FBref
+-   Transfermarkt
 
-This architecture transforms raw performance data into **executable recruitment decisions under uncertainty**.
+Storage:
 
----
+DuckDB database
 
-# 2) Repository Structure
-
-```
-risk-adjusted-scouting/
-
-├── db/
-│   └── scouting.duckdb
-│
-├── notebooks/
-│   ├── 02_talent_score_v1.ipynb
-│   ├── 03_risk_adjusted_value_and_sensitivity.ipynb
-│   ├── 04_budget_constrained_optimisation.ipynb
-│   ├── 05_reporting_and_executive_summary.ipynb
-│   └── 06_robust_optimisation_cvar.ipynb
-│
-├── docs/
-│   └── PROJECT_STATUS.md
-│
-├── assets/
-│   └── figures used in README
-│
-└── src/
-    └── data ingestion scripts
-```
-
-Local-only directories (not versioned):
-
-```
-data/
-db/
-reports/
-```
-
----
-
-# 3) Data Layer
-
-Database: **DuckDB**
-
-```
 db/scouting.duckdb
-```
 
-Core fact tables:
+Unified analytical dataset:
 
-```
-fact_player_season_fbref_tm
-fact_player_market_value
-fact_player_season_availability
-```
-
-Optimisation universes:
-
-```
-risk_adjusted_universe_v1
 risk_adjusted_universe_v2
-```
 
-### Data integrity rules
+------------------------------------------------------------------------
 
-- one row per `(player_id, season)`
-- availability aggregated before joins
-- deduplicated player-season keys
+## Feature Engineering
 
-These rules prevent **duplicate candidate selection during optimisation**.
+Constructed modelling variables including:
 
----
+-   positional classification
+-   playing time filters
+-   performance metrics
+-   market value proxies
+-   availability indicators
 
-# 4) Talent Modelling — Notebook 02
+------------------------------------------------------------------------
 
-Position-aware composite performance score.
+## Talent Model
 
-Key features:
+Notebook 02 implements a position‑aware player scoring model.
 
-- Z-score normalisation within positional groups
-- interpretable feature aggregation
-- cross-position comparability
+Methodology:
 
-Used as the **upside component** in recruitment decisions.
+-   Z‑score normalisation
+-   positional segmentation
+-   weighted composite performance index
 
----
+Output:
 
-# 5) Risk Model — Notebook 03
+talent_score
 
-Risk proxy captures two key uncertainty drivers:
+------------------------------------------------------------------------
 
-```
-Risk = z(|age − 24|) + z(minutes volatility)
-```
+## Risk Model
 
-Interpretation:
+Notebook 03 introduces risk proxies:
 
-- positive values → riskier players
-- negative values → safer profiles
+-   age deviation from peak development
+-   usage volatility
 
-Decision metric:
+Risk is standardised into:
 
-```
-Value(λ) = Talent − λ × Risk
-```
+risk_score
 
-Includes λ-sensitivity analysis.
+Decision value metric:
 
----
+value_mean = talent_score − λ × risk_score
 
-# 6) Financial Model — Total Cost of Ownership
+------------------------------------------------------------------------
 
-Transfers are framed as **capital allocation problems**.
+## Financial Model
 
-```
-TCO = Transfer Fee + discounted wage stream
-```
+Player acquisition cost approximated through:
 
-Assumptions:
+-   market value proxy
+-   wage estimation
+-   contract horizon
 
-- wage proxy ≈ 15% market value
-- contract horizon ≈ 4 years
-- discount rate ≈ 8%
+Total Cost of Ownership:
 
-Used as the **budget constraint** in optimisation.
+tco_eur
 
----
+------------------------------------------------------------------------
 
-# 7) Deterministic Squad Optimisation — Notebook 04
+## Deterministic Optimisation
 
-Binary Mixed Integer Linear Programming formulation.
-
-Decision variable:
-
-```
-x_i ∈ {0,1}
-```
+Notebook 04 formulates squad construction as a MILP.
 
 Objective:
 
-```
-max Σ x_i (Talent_i − λ Risk_i)
-```
+maximize expected squad value.
 
 Constraints:
 
-```
-Σ x_i = squad_size
-Σ x_i TCO_i ≤ Budget
-position quotas (GK/DF/MF/FW)
-```
+-   squad size
+-   budget
+-   positional quotas
 
-Solved with:
+Solver:
 
-```
-scipy.optimize.milp
-HiGHS solver
-```
+scipy.optimize.milp (HiGHS)
 
-Outputs:
+------------------------------------------------------------------------
 
-- optimal squad composition
-- sensitivity to λ and budget
-- structural squad diagnostics
+## Scenario Simulation
 
----
+Notebook 06 introduces performance uncertainty via:
 
-# 8) Reporting Layer — Notebook 05
+Regime scenarios and Monte Carlo factor model.
 
-Generates executive-ready outputs:
+------------------------------------------------------------------------
 
-- shortlist tables
-- scenario summaries
-- squad composition statistics
-- age distribution figures
+## Robust Optimisation
 
-Exports:
+Implemented CVaR‑based optimisation:
 
-```
-reports/tables/
-reports/figures/
-```
+maximize
 
-These are intended for **decision-maker communication**.
+CVaR_α ( squad_value )
 
----
+This produces squads that perform better under adverse scenarios.
 
-# 9) Scenario Simulation Layer — Notebook 06
+------------------------------------------------------------------------
 
-Player performance uncertainty is modelled via scenario generation.
+# Real Club Case Study
 
-Two engines implemented:
+Notebook 07 demonstrates the full pipeline through a recruitment
+simulation.
 
-### Regime Stress Testing
+Scenario:
 
-Discrete macro scenarios:
+-   mid‑table Big 5 club
+-   €200M recruitment budget
+-   18‑player squad
 
-- normal environment
-- moderate performance shock
-- severe negative shock
+Analyses included:
 
-### Monte Carlo Factor Model
+-   deterministic vs robust squad construction
+-   scenario performance comparison
+-   player replacement analysis
+-   budget allocation by position
+-   budget vs downside frontier
 
-Performance shocks:
+Key finding:
 
-```
-T_i^(s) = μ_i + σ_i X_{i,s}
-```
+Robust optimisation substantially improves worst‑case squad performance
+while maintaining competitive expected outcomes.
 
-Where:
+------------------------------------------------------------------------
 
-```
-X = common factor + idiosyncratic noise
-```
+# Current Project Status
 
-This simulates:
+Completed:
 
-- systemic performance shocks
-- individual player volatility.
+-   data pipeline
+-   talent modelling
+-   risk modelling
+-   financial modelling
+-   deterministic optimisation
+-   scenario simulation
+-   robust optimisation
+-   real‑club recruitment case study
 
----
+The project now represents a **complete end‑to‑end football recruitment
+decision framework**.
 
-# 10) Robust Optimisation — CVaR
+------------------------------------------------------------------------
 
-To control downside risk, the optimisation problem is reformulated using **Conditional Value at Risk (CVaR)**.
+# Potential Next Steps
 
-The objective becomes:
+Possible extensions:
 
-```
-max CVaRα ( squad_value )
-```
+-   multi‑season optimisation
+-   injury probability modelling
+-   transfer market dynamics
+-   contract and wage modelling
+-   interactive decision dashboards
 
-This protects against **worst-case scenario outcomes**.
-
-Properties:
-
-- MILP-compatible formulation
-- solved using SciPy HiGHS
-- integrated with squad constraints
-
----
-
-# 11) Key Empirical Insights
-
-### Robust optimisation improves downside stability
-
-Across budgets:
-
-- higher **P10**
-- improved **CVaR**
-- lower average player volatility (σ)
-
----
-
-### Robust squads differ structurally
-
-Deterministic vs robust squads show **large Hamming distances**, indicating materially different recruitment strategies.
-
----
-
-### Robust premium trade-off
-
-Robust squads sacrifice some expected value but deliver **substantially better downside protection**.
-
-This mirrors classical **portfolio optimisation trade-offs**.
-
----
-
-# 12) Budget Sensitivity Results
-
-Budget sweeps demonstrate:
-
-- improved expected value with higher budgets
-- diminishing marginal gains
-- reduced volatility in robust solutions
-
-Robust optimisation becomes **more valuable under tighter budgets**.
-
----
-
-# 13) Strategic Positioning
-
-This project demonstrates capabilities across multiple domains:
-
-### Data Engineering
-- DuckDB relational modelling
-- robust joins and entity resolution
-
-### Data Science
-- feature engineering
-- risk modelling
-- statistical normalisation
-
-### Financial Modelling
-- TCO / discounted cash flow framing
-
-### Operations Research
-- mixed integer optimisation
-- robust optimisation (CVaR)
-
-### Decision Intelligence
-- scenario simulation
-- executive reporting
-
-The framework generalises beyond football to **resource allocation problems under uncertainty**.
-
----
-
-# 14) Future Extensions (Research Track)
-
-Potential extensions include:
-
-- correlated performance shocks
-- injury probability modelling
-- multi-season squad planning
-- transfer fee vs wage decomposition
-- Bayesian talent uncertainty models
-
----
-
-End of file.
+These additions would transform the framework into a **production‑level
+recruitment analytics platform**.

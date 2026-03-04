@@ -25,6 +25,19 @@ The goal is to simulate **realistic recruitment decisions under financial and st
 
 ---
 
+## Project Highlights
+
+- End-to-end football recruitment decision system
+- Risk-adjusted player evaluation
+- Budget-constrained squad optimisation
+- Scenario simulation under uncertainty
+- Robust optimisation (CVaR)
+
+Technologies:
+DuckDB · Python · MILP · Monte Carlo · CVaR optimisation
+
+---
+
 # 🧠 System Architecture
 
 ```mermaid

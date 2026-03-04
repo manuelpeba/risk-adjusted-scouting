@@ -5,7 +5,6 @@ scikit-learn
 duckdb
 pyarrow
 matplotlib
-seaborn
 jupyter
 ipykernel
 python-dotenv

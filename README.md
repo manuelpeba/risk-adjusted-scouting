@@ -119,11 +119,11 @@ optimisation reduces exposure to extreme negative scenarios.
 
 Example result (Notebook 07):
 
-  Budget (€M)   Mean    P10     CVaR
-  ------------- ------- ------- -------
-  120           14.55   -0.02   -6.58
-  154           17.49   5.99    0.83
-  200           21.66   11.89   7.21
+| Budget (€M) | Mean | P10 | CVaR |
+|-------------|------|------|------|
+| 120 | 14.55 | -0.02 | -6.58 |
+| 154 | 17.49 | 5.99 | 0.83 |
+| 200 | 21.66 | 11.89 | 7.21 |
 
 Increasing recruitment investment **systematically improves downside
 performance**.
@@ -155,7 +155,7 @@ Key properties:
 
 Position‑aware composite score:
 
-    Talent = w1·z(goals90) + w2·z(assists90) + w3·z(minutes)
+`Talent = w1·z(goals90) + w2·z(assists90) + w3·z(minutes)`
 
 Features:
 
@@ -169,7 +169,7 @@ Produces a **cross‑position comparable performance metric**.
 
 ## 3️⃣ Risk Model
 
-    Risk = z(|age − 24|) + z(minutes volatility)
+`Risk = z(|age − 24|) + z(minutes volatility)`
 
 Captures:
 
@@ -184,7 +184,7 @@ Negative values indicate **safer‑than‑average players**.
 
 Recruitment is treated as a **capital allocation problem**.
 
-    TCO = Transfer Fee + discounted wage stream
+`TCO = Transfer Fee + discounted wage stream`
 
 Assumptions:
 
@@ -198,7 +198,7 @@ Assumptions:
 
 Binary MILP formulation:
 
-    max Σ xᵢ (Talentᵢ − λ Riskᵢ)
+`max Σ xᵢ (Talentᵢ − λ Riskᵢ)`
 
 Subject to:
 
@@ -208,8 +208,8 @@ Subject to:
 
 Solved using:
 
-    scipy.optimize.milp
-    HiGHS solver
+`scipy.optimize.milp`
+`HiGHS solver`
 
 ------------------------------------------------------------------------
 
@@ -302,6 +302,8 @@ This mirrors classical **portfolio optimisation trade‑offs**.
 
 # 🏗 Project Structure
 
+```bash
+
     risk-adjusted-scouting/
     │
     ├── db/
@@ -320,14 +322,14 @@ This mirrors classical **portfolio optimisation trade‑offs**.
     │   └── age_distribution_squad18.png
     │
     └── README.md
-
+```
 ------------------------------------------------------------------------
 
 # 🚀 Running the Project
 
 1️⃣ Ensure database exists
 
-    db/scouting.duckdb
+`db/scouting.duckdb`
 
 2️⃣ Run notebooks sequentially
 
